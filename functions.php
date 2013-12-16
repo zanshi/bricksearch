@@ -33,20 +33,18 @@ function mainSearch($con, $str)
 {
     $sql
         = "SELECT images.*, sets.SetID, sets.Setname
-        FROM sets, images, inventory
-        WHERE sets.SetID = inventory.SetID
-        AND images.itemID = inventory.ItemID
-        AND images.itemTypeID = inventory.ItemtypeID
+        FROM sets, images
+        WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
         AND sets.SetID LIKE '$str-%'"
     ;
 
     $result = mysqli_query($con, $sql);
 
+
     if ($result) {
 
-        for ($i = 0; $i < 60; $i++) {
-            $row = mysqli_fetch_assoc($result);
+        while($row = mysqli_fetch_assoc($result)) {
             writeHtml($row);
         }
 
