@@ -130,7 +130,7 @@ main {
 }
 .row {
     height        : 64px;
-    width         : 600px;
+    width         : 700px;
     margin        : 20px auto;
 
     background    : rgba(255, 255, 255, 0.8);
@@ -156,21 +156,18 @@ main {
 
 .text {
     float       : left;
-    margin-left : 10px;
-    padding-top: 10px;
+    margin-left : 30px;
+    padding-top: 17px;
 }
 .setname {
     display: inline;
-
-    height : 20px;
-    width  : 100%;
-    margin-right : 70px;
+    
+    font-size: 20px;
 }
 .setid {
-    display: inline;
+    float: right;
 
-    height : 20px;
-    width  : 150px;
+    margin-right: 70px;
 }
 #mainSearch {
 	position: relative;
