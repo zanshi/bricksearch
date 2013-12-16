@@ -37,6 +37,7 @@ function mainSearch($con, $str)
         WHERE sets.SetID = inventory.SetID
         AND images.itemID = inventory.ItemID
         AND images.itemTypeID = inventory.ItemtypeID
+        AND images.itemTypeID = 'S'
         AND sets.SetID LIKE '$str-%'"
     ;
 
