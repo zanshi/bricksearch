@@ -8,6 +8,5 @@ $REMOTE_REPO        = "git@github.com:jonathanstark/my_new_site.git";
 
 
 // Clone fresh repo from github using desired local repo name and checkout the desired branch
-echo shell_exec("cd {$LOCAL_REPO} && git pull");
-
-die("done " . mktime());
+echo getcwd();
+echo shell_exec("cd /srv/http/projekt/bricksearch && git pull");
