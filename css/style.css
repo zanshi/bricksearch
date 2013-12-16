@@ -155,14 +155,13 @@ main {
 }
 
 .text {
-    float       : left;
     margin-left : 30px;
     padding-top: 17px;
 }
 .setname {
     display: inline;
     
-    font-size: 20px;
+    font-size: 17px;
 }
 .setid {
     float: right;
