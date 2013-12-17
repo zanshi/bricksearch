@@ -9,12 +9,9 @@
 });*/
 
 
-$(document).ready(function() {
-
-	$(window).on("scroll", function() {
-		var fromTop = $("html, body").scrollTop();
-		$("mainSearch").toggleClass("down", (fromTop > 249));
-
-	});
-
+$(document) .ready(function () {
+    $(window) .on('scroll', function () {
+        var fromTop = $('html, body') .scrollTop();
+        $('mainSearch') .toggleClass('down', (fromTop > 249));
+    });
 });
