@@ -39,7 +39,7 @@
 
         <main>
 
-            <div id="mainSearch">
+            <div class="mainSearch">
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
                     <input type="text" name="searchterm" placeholder="Search for name or ID" class="searchField" value="<?php echo $searchterm; ?>"></input>
