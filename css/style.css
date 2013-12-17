@@ -176,13 +176,13 @@ main {
 .clone {
 
     position:fixed;
-    top: 30px;
+    top: -60px;
     transition:0.2s top ease-in;
 
 
 }
 
-.down .clone {
+.down {
     top:0;
     left:0;
     right:0;
