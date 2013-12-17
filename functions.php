@@ -82,7 +82,7 @@ function handleImgUrl($row)
         $img_url .= "L";
     } */
 
-     $img_url .= "/";
+    $img_url .= "/";
 
     // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
     if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
