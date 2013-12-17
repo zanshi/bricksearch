@@ -199,7 +199,7 @@ main {
     width           : 44px;
     margin          : 0 auto;
 
-    background      : url("../img/search2.png");
+    background      : url("../img/search_vector.svg");
     background-size : 40px 40px;
     border          : 2px solid rgba(5, 144, 221, 0.8);
     border-radius   : 0 2px 2px 0;
