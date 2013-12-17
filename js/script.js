@@ -4,6 +4,6 @@ $(document).ready(function() {
 
     $(window).on("scroll", function() {
         var fromTop = $("html,body").scrollTop();
-        $(window).toggleClass("down", (fromTop > 400));
+        $(window).toggleClass("down", (fromTop > 800));
     });
 });
