@@ -13,7 +13,7 @@ $(document).ready(function() {
 	
 	$(window).scroll(function(event) {
 		
-		if(($window).scrollTop() >= 249) {
+		if($(window).scrollTop() >= 249) {
 			$('mainSearch').addClass('down');
 		} else {
 			if($('mainSearch').hasClass('down')) {
