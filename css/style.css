@@ -5,7 +5,6 @@
 }
 html, body {
     background            : url(../img/cubes.png);
-    background-attachment : fixed;
     font-family           : 'Open Sans', sans-serif;
 }
 h1 {
