@@ -8,8 +8,6 @@
     });
 });*/
 
-
-$(document).ready(function() {
 	
 	$(window).scroll(function(event) {
 		
@@ -22,5 +20,3 @@ $(document).ready(function() {
 		}
 
 	});
-
-});
