@@ -12,10 +12,10 @@
 	$(window).scroll(function(event) {
 		console.log($(window).scrollTop());
 		if($(window).scrollTop() >= 249) {
-			$('.mainSearch').addClass('.down');
+			$('.mainSearch').addClass('down');
 		} else {
-			if($('.mainSearch').hasClass('.down')) {
-				$('.mainSearch').removeClass('.down');
+			if($('.mainSearch').hasClass('down')) {
+				$('.mainSearch').removeClass('down');
 			}
 		}
 
