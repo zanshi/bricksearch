@@ -10,7 +10,6 @@
 
 	
 	$(window).scroll(function(event) {
-		console.log($(window).scrollTop());
 		if($(window).scrollTop() >= 249) {
 			$('.mainSearch').addClass('down');
 		} else {
