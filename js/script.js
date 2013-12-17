@@ -17,7 +17,7 @@ $(document).ready(function() {
 
 		var fromTop = $("html, body").scrollTop();
 		var pos = $search.position();
-		$search.toggleClass("down", (fromTop > pos.top));
+		$search.toggleClass("down", (fromTop > 249));
 
 	});
 
