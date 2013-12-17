@@ -217,7 +217,7 @@ main {
     width      : 117px;
     margin     : 0 auto;
 
-    background : url("../img/search4.png");
+    background : url("../img/search_vector.svg");
 
     transition : box-shadow 0.25s;
 }
