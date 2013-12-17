@@ -36,7 +36,7 @@ function mainSearch($con, $str)
         FROM sets, images
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
-        AND sets.SetID LIKE '$str%'"
+        AND sets.SetID LIKE '$str'"
     ;
 
     $result = mysqli_query($con, $sql);
@@ -82,7 +82,7 @@ function handleImgUrl($row)
         $img_url .= "L";
     } */
 
-     $img_url .= "/";
+    $img_url .= "/";
 
     // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
     if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
