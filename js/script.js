@@ -9,14 +9,18 @@
 });*/
 
 
-$(document) .ready(function () {
+$(document).ready(function() {
+	
+	$(window).scroll(function(event) {
+		
+		if(($window).scrollTop() >= 249) {
+			$('mainSearch').addClass('down');
+		} else {
+			if($('mainSearch').hasClass('down')) {
+				$('mainSearch').removeClass('down');
+			}
+		}
 
-    $(window).scroll(function () {
-        var fromTop = $("html, body") .scrollTop();
-        $("mainSearch") .toggleClass("down", (fromTop > 249));
-    });
+	});
+
 });
-
-
-
-
