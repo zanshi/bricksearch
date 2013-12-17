@@ -10,8 +10,12 @@
 
 
 $(document) .ready(function () {
-    $(window) .on('scroll', function () {
+    $(window).scroll(function () {
         var fromTop = $('html, body') .scrollTop();
         $('mainSearch') .toggleClass('down', (fromTop > 249));
     });
 });
+
+
+
+
