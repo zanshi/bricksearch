@@ -37,7 +37,7 @@ function mainSearch($con, $str)
         FROM sets, images
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
-        AND sets.SetID LIKE '$str%'"
+        AND sets.SetID LIKE '%$str%'"
     ;
 
     $result = mysqli_query($con, $sql);
@@ -57,8 +57,27 @@ function mainSearch($con, $str)
 }
 
 
+/**
+ * List year made, category name, parts names, id for parts
+ * Will probably add more stuff
+ * 
+ */
 function extendedSearch($setID) {
 
+    $setQuery
+        = "SELECT sets.Year, categories.Categoryname
+        FROM sets, categories
+        WHERE sets.CatID = categories.CatID
+        AND sets.SetID LIKE '$setID'"
+    ;
+
+    $partsQuery 
+        = "SELECT parts.Partname, inventory.ItemID
+            FROM sets, parts, inventory
+            WHERE sets.SetID = inventory.SetID
+            AND inventory.ItemID = parts.PartID
+            AND sets.SetID LIKE '$setID'"
+    ;
 
 }
 
