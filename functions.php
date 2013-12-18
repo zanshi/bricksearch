@@ -148,6 +148,8 @@ function handleImgUrl($con, $setID)
         AND images.itemID = '$setID'"
     ;
 
+    var_dump($setID);
+
     $result = mysqli_query($con, $sql);
     
     if($result) {
