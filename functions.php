@@ -42,7 +42,7 @@ function mainSearch($con, $str, $start)
     ;*/
 
     $sql
-        = "SELECT images.*, sets.setID, sets.Setname
+        = "SELECT images.*, sets.SetID, sets.Setname
         FROM sets
         LEFT JOIN images
         ON sets.SetID=images.itemID
