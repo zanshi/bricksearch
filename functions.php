@@ -71,7 +71,7 @@ function mainSearch($con, $str, $start)
         echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
         while($row = mysqli_fetch_assoc($result)) {
-            mainSearchHtml($row);
+            mainSearchHtml($con, $row);
         }
 
         mysqli_free_result($result);
@@ -121,7 +121,7 @@ function noResult($str) {
 }
 
 
-function mainSearchHtml($row)
+function mainSearchHtml($con, $row)
 {
 
     $imgUrl = handleImgUrl($con, $row['setID']);
@@ -150,36 +150,39 @@ function handleImgUrl($con, $setID)
 
     $result = mysqli_query($con, $sql);
     
-    $row = mysqli_fetch_assoc($result);
+    if($result) {
+        
+        $row = mysqli_fetch_assoc($result);
 
-    if($row['itemID'] == NULL) {
-        $imgUrl = "img/noimage.png";
-    } else {
-        // Sätter ihop URL:en efter vad som $row innehåller.
-        $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
-        $imgUrl = $imgDir . $row['itemTypeID'];
+        if($row['itemID'] == NULL) {
+            $imgUrl = "img/noimage.png";
+        } else {
+            // Sätter ihop URL:en efter vad som $row innehåller.
+            $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
+            $imgUrl = $imgDir . $row['itemTypeID'];
 
-        /*if ($row['has_largejpg'] == "1") {
-            $imgUrl .= "L";
-        } */
+            /*if ($row['has_largejpg'] == "1") {
+                $imgUrl .= "L";
+            } */
 
-        $imgUrl .= "/";
+            $imgUrl .= "/";
 
-        // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
-        if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
-            $imgUrl = $imgUrl . $row['colorID'] . "/";
+            // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
+            if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
+                $imgUrl = $imgUrl . $row['colorID'] . "/";
+            }
+
+            // Lägger till itemID till URL:en
+            $imgUrl = $imgUrl . $row['itemID'];
+
+            // Lägger till lämpliga filändelser
+            if ($row['has_gif'] == 1) {
+                $imgUrl = $imgUrl . ".gif";
+            } elseif ($row['has_jpg'] == 1) {
+                $imgUrl = $imgUrl . ".jpg";
+            }
+
         }
-
-        // Lägger till itemID till URL:en
-        $imgUrl = $imgUrl . $row['itemID'];
-
-        // Lägger till lämpliga filändelser
-        if ($row['has_gif'] == 1) {
-            $imgUrl = $imgUrl . ".gif";
-        } elseif ($row['has_jpg'] == 1) {
-            $imgUrl = $imgUrl . ".jpg";
-        }
-
     }
 
     return $imgUrl;
