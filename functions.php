@@ -42,7 +42,7 @@ function mainSearch($con, $str, $start)
     ;*/
 
     $sql
-        = "SELECT images.*, sets.SetID, sets.Setname
+        = "SELECT images.*, sets.setID, sets.Setname
         FROM sets
         LEFT JOIN images
         ON sets.SetID=images.itemID
@@ -132,6 +132,18 @@ function mainSearchHtml($row)
 
 function handleImgUrl($row)
 {
+
+
+    $sql
+        = "SELECT images.*
+        FROM sets, images
+        WHERE sets.setID = 
+        WHERE (SetID LIKE '%$str%' OR Setname LIKE '%$str%')
+        LIMIT $start , 20"
+    ;
+
+
+
 
     if($row['itemID'] == NULL) {
         $imgUrl = "img/noimage.png";
