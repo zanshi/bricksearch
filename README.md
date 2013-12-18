@@ -1,4 +1,8 @@
-bricksearch
+Brick Search
 ===========
 
-bricksearch repo
+Search through the http://bricklink.com Lego database.
+
+Permission of usage granted to students of Linköping University
+
+
