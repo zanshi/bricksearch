@@ -12,6 +12,7 @@ function connect()
 
 function validate($data)
 {
+    // Do something more here?
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
@@ -45,23 +46,40 @@ function mainSearch($con, $str)
     if ($result) {
 
         while($row = mysqli_fetch_assoc($result)) {
-            writeHtml($row);
+            mainSearchHtml($row);
         }
 
         mysqli_free_result($result);
 
+    } else {
+        noResult($str);
     }
 
 }
 
-function writeHtml($row)
+
+function extendedSearch($setID) {
+
+
+}
+
+function noResult($str) {
+    echo "<div class='row'>" . "\n";
+    echo    "<div class='text' style='text-align:center'>" . "\n";
+    echo        "<p> Your search for " . $str . " gave no results. Please try again. </p>" . "\n";
+    echo    "</div>" . "\n";
+    echo "</div>" . "\n";
+}
+
+
+function mainSearchHtml($row)
 {
 
-    $img_url = handleImgUrl($row);
+    $imgUrl = handleImgUrl($row);
 
     echo "<div class='row'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
-    echo        "<img class='thumb' src='" . $img_url . "' alt='bild' >" . "\n";
+    echo        "<img class='thumb' src='" . $imgUrl . "' alt='bild' >" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
     echo        "<h2 class='setname'>" . $row['Setname'] . "</h2> \n";
@@ -75,32 +93,32 @@ function handleImgUrl($row)
 {
 
     // Sätter ihop URL:en efter vad som $row innehåller.
-    $img_dir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
-    $img_url = $img_dir . $row['itemTypeID'];
+    $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
+    $imgUrl = $imgDir . $row['itemTypeID'];
 
     /*if ($row['has_largejpg'] == "1") {
-        $img_url .= "L";
+        $imgUrl .= "L";
     } */
 
-    $img_url .= "/";
+    $imgUrl .= "/";
 
     // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
     if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
-        $img_url = $img_url . $row['colorID'] . "/";
+        $imgUrl = $imgUrl . $row['colorID'] . "/";
     }
 
     // Lägger till itemID till URL:en
-    $img_url = $img_url . $row['itemID'];
+    $imgUrl = $imgUrl . $row['itemID'];
 
     // Lägger till lämpliga filändelser
     if ($row['has_gif'] == 1) {
-        $img_url = $img_url . ".gif";
+        $imgUrl = $imgUrl . ".gif";
     } elseif ($row['has_jpg'] == 1) {
-        $img_url = $img_url . ".jpg";
+        $imgUrl = $imgUrl . ".jpg";
     } else {
-        $img_url = "img/noimage.png";
+        $imgUrl = "img/noimage.png";
     }
 
-    return $img_url;
+    return $imgUrl;
 
 }
