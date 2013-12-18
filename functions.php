@@ -37,7 +37,7 @@ function mainSearch($con, $str)
         FROM sets, images
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
-        AND sets.SetID LIKE '%$str%'"
+        AND (sets.SetID LIKE '%$str%' OR sets.Setname LIKE '%$str%')"
     ;
 
     $result = mysqli_query($con, $sql);
@@ -68,7 +68,7 @@ function extendedSearch($setID) {
         = "SELECT sets.Year, categories.Categoryname
         FROM sets, categories
         WHERE sets.CatID = categories.CatID
-        AND sets.SetID LIKE '$setID'"
+        AND sets.SetID = '$setID'"
     ;
 
     $partsQuery 
@@ -76,8 +76,12 @@ function extendedSearch($setID) {
             FROM sets, parts, inventory
             WHERE sets.SetID = inventory.SetID
             AND inventory.ItemID = parts.PartID
-            AND sets.SetID LIKE '$setID'"
+            AND sets.SetID = '$setID'"
     ;
+
+
+
+
 
 }
 
