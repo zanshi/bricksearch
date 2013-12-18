@@ -52,7 +52,7 @@ function mainSearch($con, $str, $start)
 
     $calcTime = microtime(true);
 
-    $result = mysqli_query($con, $sql);
+    $result = mysqli_query($con, $sql, MYSQLI_USE_RESULT);
 
     $calcTime = microtime(true) - $calcTime;
 
