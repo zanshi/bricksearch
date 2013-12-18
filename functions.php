@@ -41,12 +41,20 @@ function mainSearch($con, $str, $start)
         LIMIT $start , 20"
     ;*/
 
-    $sqlp
+/*    $sql
         = "SELECT images.*, sets.setID, sets.Setname
         FROM sets
         LEFT JOIN images
         ON sets.SetID=images.itemID
         WHERE (SetID LIKE '%$str%' OR Setname LIKE '%$str%')
+        LIMIT $start , 20"
+    ;*/
+
+    $sql
+        = "SELECT sets.setID, sets.Setname
+        FROM sets
+        WHERE SetID LIKE '%$str%'
+        OR Setname LIKE '%$str%'
         LIMIT $start , 20"
     ;
 
@@ -116,7 +124,7 @@ function noResult($str) {
 function mainSearchHtml($row)
 {
 
-    $imgUrl = handleImgUrl($row);
+    $imgUrl = handleImgUrl($row['setID']);
 
     echo "<div class='row'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
@@ -130,20 +138,19 @@ function mainSearchHtml($row)
 
 }
 
-function handleImgUrl($row)
+function handleImgUrl($setID)
 {
-
 
     $sql
         = "SELECT images.*
         FROM sets, images
-        WHERE sets.setID = 
-        WHERE (SetID LIKE '%$str%' OR Setname LIKE '%$str%')
-        LIMIT $start , 20"
+        WHERE sets.setID = images.itemID
+        AND images.itemID = '$setID'"
     ;
 
-
-
+    $result = mysqli_query($con, $sql);
+    
+    $row = mysqli_fetch_assoc($result);
 
     if($row['itemID'] == NULL) {
         $imgUrl = "img/noimage.png";
