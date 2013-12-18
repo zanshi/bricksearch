@@ -30,14 +30,15 @@ function printTitle($title)
 
 }
 
-function mainSearch($con, $str)
+function mainSearch($con, $str, $startResult)
 {
     $sql
         = "SELECT images.*, sets.SetID, sets.Setname
         FROM sets, images
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
-        AND (sets.SetID LIKE '%$str%' OR sets.Setname LIKE '%$str%')"
+        AND (sets.SetID LIKE '%$str%' OR sets.Setname LIKE '%$str%')
+        LIMIT $startResul 20"
     ;
 
     $result = mysqli_query($con, $sql);
