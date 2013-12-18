@@ -154,6 +154,8 @@ function handleImgUrl($con, $setID)
 
         $row = mysqli_fetch_assoc($result);
 
+        var_dump($row);
+
         if($row['itemID'] == NULL) {
             $imgUrl = "img/noimage.png";
         } else {
