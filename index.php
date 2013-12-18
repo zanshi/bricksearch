@@ -42,7 +42,7 @@
             <div class="mainSearch">
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-                    <input type="text" name="searchterm" placeholder="Search for name or ID" class="searchField" value="<?php echo $searchterm; ?>"></input>
+                    <input type="text" name="searchterm" placeholder="Search for name or ID of a Lego set" class="searchField" value="<?php echo $searchterm; ?>"></input>
                     <input type="submit" id="searchButton" value=""></input>
                 </form>
 
