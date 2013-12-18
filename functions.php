@@ -124,7 +124,7 @@ function noResult($str) {
 function mainSearchHtml($con, $row)
 {
 
-    $imgUrl = handleImgUrl($con, $row['setID']);
+    $imgUrl = handleImgUrl($con, $row['SetID']);
 
     echo "<div class='row'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
