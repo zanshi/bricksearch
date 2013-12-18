@@ -44,7 +44,7 @@ function mainSearch($con, $str)
 
     var_dump($result);
 
-    if ($result) {
+    if (mysqli_num_rows($result) != 0) {
 
         while($row = mysqli_fetch_assoc($result)) {
             mainSearchHtml($row);
