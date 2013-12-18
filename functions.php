@@ -38,7 +38,7 @@ function mainSearch($con, $str, $startResult)
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
         AND (sets.SetID LIKE '%$str%' OR sets.Setname LIKE '%$str%')
-        LIMIT $startResult 20"
+        LIMIT $startResult , 20"
     ;
 
     var_dump($startResult);
