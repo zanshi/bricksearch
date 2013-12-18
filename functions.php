@@ -47,7 +47,6 @@ function mainSearch($con, $str, $start)
         LEFT JOIN images
         ON sets.SetID=images.itemID
         WHERE (SetID LIKE '%$str%' OR Setname LIKE '%$str%')
-        ORDER BY setname
         LIMIT $start , 20"
     ;
 
