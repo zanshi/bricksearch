@@ -41,6 +41,8 @@ function mainSearch($con, $str, $startResult)
         LIMIT $startResult 20"
     ;
 
+    var_dump($startResult);
+
     $result = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($result) != 0) {
