@@ -51,11 +51,19 @@ function mainSearch($con, $str, $start)
         LIMIT $start , 20"
     ;
 
-    var_dump($start);
+    $startTime = microtime();
 
     $result = mysqli_query($con, $sql);
 
-    if (mysqli_num_rows($result) != 0) {
+    $endTime = microtime();
+
+    $calcTime = $endTime - $startTime;
+
+    $nrOfResults = mysqli_num_rows($result);
+
+    if ($nrOfResults != 0) {
+
+        echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds). </div>";
 
         while($row = mysqli_fetch_assoc($result)) {
             mainSearchHtml($row);
@@ -85,10 +93,11 @@ function extendedSearch($setID) {
     ;
 
     $partsQuery 
-        = "SELECT parts.Partname, inventory.ItemID
-            FROM sets, parts, inventory
-            WHERE sets.SetID = inventory.SetID
-            AND inventory.ItemID = parts.PartID
+        = "SELECT parts.partName, inventory.itemID, inventory.quantity, colors.colorName
+            FROM sets, parts, inventory, colors
+            WHERE sets.setID = inventory.setID
+            AND inventory.colorID = colors.colorID
+            AND inventory.itemID = parts.partID
             AND sets.SetID = '$setID'"
     ;
 
