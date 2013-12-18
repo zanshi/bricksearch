@@ -42,6 +42,7 @@ function mainSearch($con, $str)
 
     $result = mysqli_query($con, $sql);
 
+    var_dump($result);
 
     if ($result) {
 
