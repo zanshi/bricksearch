@@ -40,7 +40,11 @@ function mainSearch($con, $str)
         AND sets.SetID LIKE '$str%'"
     ;
 
+    var_dump($sql);
+
     $sql = mysqli_real_escape_string($con, $sql);
+
+    var_dump($sql);
 
     $result = mysqli_query($con, $sql);
 
