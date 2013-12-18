@@ -50,19 +50,17 @@ function mainSearch($con, $str, $start)
         LIMIT $start , 20"
     ;
 
-    $startTime = microtime();
+    $calcTime = microtime(true);
 
     $result = mysqli_query($con, $sql);
 
-    $endTime = microtime();
-
-    $calcTime = $startTime - $endTime;
+    $calcTime = microtime(true) - $calcTime;
 
     $nrOfResults = mysqli_num_rows($result);
 
     if ($nrOfResults != 0) {
 
-        echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds). </div>";
+        echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
         while($row = mysqli_fetch_assoc($result)) {
             mainSearchHtml($row);
