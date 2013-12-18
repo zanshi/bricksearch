@@ -30,18 +30,27 @@ function printTitle($title)
 
 }
 
-function mainSearch($con, $str, $startResult)
+function mainSearch($con, $str, $start)
 {
-    $sql
+    /*$sql
         = "SELECT images.*, sets.SetID, sets.Setname
         FROM sets, images
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
         AND (sets.SetID LIKE '%$str%' OR sets.Setname LIKE '%$str%')
-        LIMIT $startResult , 20"
+        LIMIT $start , 20"
+    ;*/
+
+    $sql
+        = "SELECT images.*, sets.SetID, sets.Setname
+        FROM sets
+        LEFT JOIN images
+        ON sets.SetID=images.itemID
+        WHERE (SetID LIKE '%$str%' OR Setname LIKE '%$str%')
+        LIMIT $start , 20"
     ;
 
-    var_dump($startResult);
+    var_dump($start);
 
     $result = mysqli_query($con, $sql);
 
@@ -117,31 +126,34 @@ function mainSearchHtml($row)
 function handleImgUrl($row)
 {
 
-    // Sätter ihop URL:en efter vad som $row innehåller.
-    $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
-    $imgUrl = $imgDir . $row['itemTypeID'];
-
-    /*if ($row['has_largejpg'] == "1") {
-        $imgUrl .= "L";
-    } */
-
-    $imgUrl .= "/";
-
-    // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
-    if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
-        $imgUrl = $imgUrl . $row['colorID'] . "/";
-    }
-
-    // Lägger till itemID till URL:en
-    $imgUrl = $imgUrl . $row['itemID'];
-
-    // Lägger till lämpliga filändelser
-    if ($row['has_gif'] == 1) {
-        $imgUrl = $imgUrl . ".gif";
-    } elseif ($row['has_jpg'] == 1) {
-        $imgUrl = $imgUrl . ".jpg";
-    } else {
+    if($row['itemID'] == NULL) {
         $imgUrl = "img/noimage.png";
+    } else {
+        // Sätter ihop URL:en efter vad som $row innehåller.
+        $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
+        $imgUrl = $imgDir . $row['itemTypeID'];
+
+        /*if ($row['has_largejpg'] == "1") {
+            $imgUrl .= "L";
+        } */
+
+        $imgUrl .= "/";
+
+        // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
+        if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
+            $imgUrl = $imgUrl . $row['colorID'] . "/";
+        }
+
+        // Lägger till itemID till URL:en
+        $imgUrl = $imgUrl . $row['itemID'];
+
+        // Lägger till lämpliga filändelser
+        if ($row['has_gif'] == 1) {
+            $imgUrl = $imgUrl . ".gif";
+        } elseif ($row['has_jpg'] == 1) {
+            $imgUrl = $imgUrl . ".jpg";
+        }
+
     }
 
     return $imgUrl;
