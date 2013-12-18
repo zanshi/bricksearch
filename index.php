@@ -52,7 +52,13 @@
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (!empty($_GET["searchterm"])) {
         $searchterm = validate($_GET["searchterm"]);
-        mainSearch(connect(), $searchterm);
+
+        if(!empty($_GET["start"])) {
+            $start = validate($_GET["start"]);
+            mainSearch(connect(), $searchterm, $start);
+        } else {
+            mainSearch(connect(), $searchterm, 0);
+        }
     }
     
 }
