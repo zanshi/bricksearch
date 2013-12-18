@@ -37,8 +37,7 @@ function mainSearch($con, $str)
         FROM sets, images
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
-        AND sets.SetID LIKE '%$str%'
-        OR sets.Setname LIKE '%$str%'"
+        AND sets.Setname LIKE '%$str%'"
     ;
 
     $result = mysqli_query($con, $sql);
