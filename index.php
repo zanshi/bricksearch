@@ -56,6 +56,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
     
 }
+    
+    mainSearch(connect(), "11");
+
 ?>
 
         </main>
