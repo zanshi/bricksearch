@@ -41,8 +41,8 @@ function mainSearch($con, $str, $start)
         LIMIT $start , 20"
     ;*/
 
-    $sql
-        = "SELECT images.*, sets.SetID, sets.Setname
+    $sqlp
+        = "SELECT images.*, sets.setID, sets.Setname
         FROM sets
         LEFT JOIN images
         ON sets.SetID=images.itemID
