@@ -56,7 +56,7 @@ function mainSearch($con, $str, $start)
 
     $endTime = microtime();
 
-    $calcTime = $endTime - $startTime;
+    $calcTime = $startTime - $endTime;
 
     $nrOfResults = mysqli_num_rows($result);
 
