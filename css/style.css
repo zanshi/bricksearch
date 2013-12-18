@@ -115,6 +115,11 @@ nav ul {
 main {
     margin : 20px auto;
 }
+
+#resultStats {
+    text-align: center;
+    margin: 30px 0;
+}
 .advRow {
     display : block;
     width   : 315px;
