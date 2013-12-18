@@ -37,14 +37,8 @@ function mainSearch($con, $str)
         FROM sets, images
         WHERE sets.SetID = images.itemID
         AND images.itemTypeID = 'S'
-        AND sets.SetID LIKE '$str'"
+        AND sets.SetID LIKE '$str%'"
     ;
-
-    var_dump($sql);
-
-    $sql = mysqli_real_escape_string($con, $sql);
-
-    var_dump($sql);
 
     $result = mysqli_query($con, $sql);
 
