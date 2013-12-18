@@ -51,7 +51,7 @@ function mainSearch($con, $str, $start)
     ;*/
 
     $sql
-        = "SELECT sets.setID, sets.Setname
+        = "SELECT sets.SetID, sets.Setname
         FROM sets
         WHERE SetID LIKE '%$str%'
         OR Setname LIKE '%$str%'
@@ -151,7 +151,7 @@ function handleImgUrl($con, $setID)
     $result = mysqli_query($con, $sql);
     
     if($result) {
-        
+
         $row = mysqli_fetch_assoc($result);
 
         if($row['itemID'] == NULL) {
