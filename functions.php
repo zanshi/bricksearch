@@ -131,7 +131,8 @@ function handleImgUrl($row)
         $imgUrl = "img/noimage.png";
     } else {
         // Sätter ihop URL:en efter vad som $row innehåller.
-        $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
+        //$imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
+        $imgDir = "http://www.bricklink.com/";
         $imgUrl = $imgDir . $row['itemTypeID'];
 
         /*if ($row['has_largejpg'] == "1") {
