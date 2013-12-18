@@ -1,5 +1,6 @@
 <?php
 
+
 function connect()
 {
     $con = mysqli_connect("koneko.se", "projekt", "tnmk30", "lego");
@@ -64,7 +65,7 @@ function mainSearch($con, $str, $start)
 
     $calcTime = microtime(true) - $calcTime;
 
-    $nrOfResults = mysqli_num_rows($result);
+    $nrOfResults = countResults($con, $str);
 
     if ($nrOfResults != 0) {
 
@@ -80,6 +81,23 @@ function mainSearch($con, $str, $start)
         noResult($str);
     }
 
+}
+
+function countResults($con, $str) {
+    $sql
+        = "SELECT COUNT(*) AS results
+        FROM sets
+        WHERE SetID LIKE '%$str%'
+        OR Setname LIKE '%$str%'"
+    ;
+
+    $result = mysqli_query($con, $sql);
+
+    $row = mysqli_fetch_assoc($result);
+
+    $nrOfResults = $row['results'];
+
+    return $nrOfResults;
 }
 
 
@@ -148,15 +166,12 @@ function handleImgUrl($con, $setID)
         AND images.itemID = '$setID'"
     ;
 
-    var_dump($setID);
-
     $result = mysqli_query($con, $sql);
     
     if($result) {
 
         $row = mysqli_fetch_assoc($result);
 
-        var_dump($row);
 
         if($row['itemID'] == NULL) {
             $imgUrl = "img/noimage.png";
