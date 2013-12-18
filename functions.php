@@ -42,8 +42,6 @@ function mainSearch($con, $str)
 
     $result = mysqli_query($con, $sql);
 
-    var_dump($result);
-
     if (mysqli_num_rows($result) != 0) {
 
         while($row = mysqli_fetch_assoc($result)) {
@@ -67,7 +65,7 @@ function extendedSearch($setID) {
 function noResult($str) {
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
-    echo        "<p> Your search for " . $str . " gave no results. Please try again. </p>" . "\n";
+    echo        "<p> Your search for <strong>" . $str . "</strong> gave no results. Please try again. </p>" . "\n";
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
 }
