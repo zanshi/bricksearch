@@ -8,16 +8,27 @@
     });
 });*/
 
+$(document).ready(function($) {
 	
+	var initalPos = $(".mainSearch").offset().top;
+
 	$(window).scroll(function(event) {
-		if($(window).scrollTop() >= 249) {
+
+		if(parseInt($(window).scrollTop()) > (initalPos - 10)) {
+
 			$('.mainSearch').addClass('down');
 			$('main').css("padding-top", "44px")
+
 		} else {
+
 			if($('.mainSearch').hasClass('down')) {
+
 				$('main').css("padding-top", "0px");
 				$('.mainSearch').removeClass('down');
+
 			}
 		}
 
 	});
+
+});

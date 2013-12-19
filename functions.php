@@ -146,7 +146,7 @@ function mainSearchHtml($con, $row)
 
     echo "<div class='row'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
-    echo        "<img class='thumb' src='" . $imgUrl . "' alt='bild' >" . "\n";
+    echo        "<img src='" . $imgUrl . "' alt='bild' >" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
     echo        "<h2 class='setname'>" . $row['Setname'] . "</h2> \n";
