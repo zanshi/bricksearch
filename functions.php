@@ -101,39 +101,10 @@ function countResults($con, $str) {
 }
 
 
-/**
- * List year made, category name, parts names, id for parts
- * Will probably add more stuff
- * 
- */
-function extendedSearch($setID) {
-
-    $setQuery
-        = "SELECT sets.Year, categories.Categoryname
-        FROM sets, categories
-        WHERE sets.CatID = categories.CatID
-        AND sets.SetID = '$setID'"
-    ;
-
-    $partsQuery 
-        = "SELECT parts.partName, inventory.itemID, inventory.quantity, colors.colorName
-            FROM sets, parts, inventory, colors
-            WHERE sets.setID = inventory.setID
-            AND inventory.colorID = colors.colorID
-            AND inventory.itemID = parts.partID
-            AND sets.SetID = '$setID'"
-    ;
-
-
-
-
-
-}
-
 function noResult($str) {
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
-    echo        "<p> Your search for <strong>" . $str . "</strong> gave no results. Please try again. </p>" . "\n";
+    echo        "Your search for <strong>" . $str . "</strong> gave no results. Please try again." . "\n";
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
 }
@@ -144,12 +115,12 @@ function mainSearchHtml($con, $row)
 
     $imgUrl = handleImgUrl($con, $row['SetID']);
 
-    echo "<div class='row'>" . "\n";
+    echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
-    echo        "<img src='" . $imgUrl . "' alt='bild' >" . "\n";
+    echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
-    echo        "<h2 class='setname'>" . $row['Setname'] . "</h2> \n";
+    echo        "<h3 class='setname'>" . $row['Setname'] . "</h3> \n";
     echo         "<p class='setid'>" . $row['SetID'] . "</p> \n";
     echo    "</div>" . "\n";
     echo "</div>" . "\n";

@@ -23,8 +23,15 @@ h1 {
     text-transform: uppercase;
     text-shadow: 1px 1px 0 rgba(204, 204, 204, 1), 2px 2px 0 rgba(201, 201, 201, 1), 3px 3px 0 rgba(187, 187, 187, 1), 4px 4px 0 rgba(185, 185, 185, 1), 5px 5px 0 rgba(170, 170, 170, 1), 6px 6px 1px rgba(0, 0, 0, .1), 0px 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2), 5px 5px 10px rgba(0, 0, 0, .25), 10px 10px 10px rgba(0, 0, 0, .2), 15px 15px 15px rgba(0, 0, 0, .3);
 }
-
 h2 {
+    margin: 0;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #0076a8;
+    text-align: center;
+}
+
+h3 {
     margin: 0;
     font-size: 1em;
     font-weight: bold;
@@ -36,13 +43,23 @@ p {
 }
 
 a {
+    opacity: 1;
     color: white;
     text-decoration: none;
+    transition: opacity 100ms;
 }
 
 a:hover {
     text-decoration: underline;
 }
+
+a:focus {
+    opacity: 0.7;
+    outline: none;
+
+}
+
+
 
 li {
     display: inline;
@@ -176,6 +193,31 @@ main {
     float: right;
     margin-right: 30px;
 }
+
+.extendedResults {
+    overflow: hidden;
+    padding: 20px;
+    margin-top: 0;
+}
+
+.moreSetInfo {
+    float: left;
+    width: 30%;
+}
+
+.partsContainer {
+    float: left;
+    width: 70%;
+}
+
+.parts {
+    float: left;
+    min-height: 200px;
+    border: 1px solid rgba(5, 144, 221, 0.8);
+    margin: 10px;
+    padding: 15px;
+}
+
 
 .mainSearch {
     position: static;

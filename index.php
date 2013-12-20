@@ -16,6 +16,66 @@
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery-2.0.3.js"></script>
+
+    <script>
+
+        function loadExtended(parent) {
+
+            var setID = parent.children[1].children[1].innerHTML;
+
+            console.log(setID);
+
+            //$ (parent).append( "extended.php?id=" + setID);
+
+/*            var request = $.ajax({
+                url: 'extended.php',
+                type: 'GET',
+                dataType: 'html',
+                context: parent,
+                data: {id: setID},
+            })
+            .done(function() {
+
+                console.log("success");
+            })
+            .fail(function() {
+                console.log("error");
+            })
+            .always(function() {
+                console.log("complete");
+            });*/
+
+/*            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange=function()
+            {
+                if (xmlhttp.readyState==4 && xmlhttp.status==200)
+                {
+                    var content = document.createTextNode(xmlhttp.responseText);
+                    parent.appendChild(content);
+                }
+            }
+            xmlhttp.open("GET","extended.php?id="+setID, true);
+            xmlhttp.send();*/
+
+            if(parent.children[2]) {
+                //parent.children[2]
+            }
+
+            console.log(parent.innerHTML);
+
+            $.get("extended.php", { id: setID })
+                .done(function (data) {
+                    $(parent).after(data);
+                    console.log("success");
+                });
+
+
+
+            
+        }
+
+    </script>
   
 
 
