@@ -127,7 +127,7 @@ nav a:active {
 }
 
 main {
-    margin: 20px auto;
+    margin: 20px auto 80px auto;
 }
 
 #resultStats {
@@ -282,6 +282,18 @@ main {
 .searchField:hover {
     box-shadow: 0 0 3px rgba(5, 144, 221, 0.5);
 }
+
+
+#multiPage {
+    margin: 30px auto;
+    text-align: center;
+}
+
+li>a {
+    color: black;
+    list-style: none;
+}
+
 
 footer {
     position: fixed;
