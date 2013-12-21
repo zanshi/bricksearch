@@ -187,8 +187,11 @@ function multiPage($str, $nrOfResults, $start) {
     echo "<div id='multiPage'>";
         echo "<ul>";
 
-        $totalPages = ($nrOfResults/20);
+        $totalPages = ceil($nrOfResults/20);
         $currentPage = ($start/20);
+
+        echo "total pages: " . $totalPages . '<br>';
+        echo "current page: " . $currentPage . '<br>';
 
         if($currentPage <= 5) {
             $i = 0;
@@ -196,7 +199,7 @@ function multiPage($str, $nrOfResults, $start) {
             $i = ($currentPage-5);
         }
 
-        if(($currentPage + 5) > $totalPages) {
+        if($totalPages < 10) {
             $endPage = $totalPages;
         } else if ($currentPage < 5 ) {
             $endPage = 10;
@@ -204,10 +207,15 @@ function multiPage($str, $nrOfResults, $start) {
             $endPage = ($currentPage + 5);
         }
 
+        echo 'start page: ' . $i;
+        echo '<br> end page: ' . $endPage . "</br>";
+
         for(; $i < $endPage; $i++) {
+            echo 'i: ' . $i;
+
             if($i == $currentPage) {
                 echo "<li> <strong> " . ($i+1) . " </strong> </li>";
-            } else if($i == 0 || $i == $endPage) {
+            } else if($i == 0 || $i == $totalPages-1) {
                 echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'><strong>" . ($i+1) . "</strong></a> </li>";
             }
             else  {
