@@ -17,7 +17,7 @@ $(document).ready(function($) {
 		if(parseInt($(window).scrollTop()) > (initalPos - 10)) {
 
 			$('.mainSearch').addClass('down');
-			$('main').css("padding-top", "44px")
+			$('main').css("padding-top", "44px");
 
 		} else {
 
