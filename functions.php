@@ -184,23 +184,49 @@ function handleImgUrl($con, $setID)
 
 function multiPage($str, $nrOfResults, $start) {
 
-    echo "<div id='multiPage'>";        
+    echo "<div id='multiPage'>";
         echo "<ul>";
 
-        if($start < 100) {
+        $totalPages = ($nrOfResults/20);
+        $currentPage = ($start/20);
+
+        if($currentPage <= 5) {
             $i = 0;
         } else {
-            $i = $start/20;
+            $i = ($currentPage-5);
         }
 
-        for(; $i < $nrOfResults/20; $i++) {
-            if($i == $start) {
-                echo "<li> <strong> " . $i . " </strong> </li>";
-            } else {
-                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . $i . "</a> </li>";
+        if(($currentPage + 5) > $totalPages) {
+            $endPage = $totalPages;
+        } else if ($currentPage < 5 ) {
+            $endPage = 10;
+        } else {
+            $endPage = ($currentPage + 5);
+        }
+
+        for(; $i < $endPage; $i++) {
+            if($i == $currentPage) {
+                echo "<li> <strong> " . ($i+1) . " </strong> </li>";
+            } else if($i == 0 || $i == $endPage) {
+                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'><strong>" . ($i+1) . "</strong></a> </li>";
             }
-        } 
+            else  {
+                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
+            }
+        }
         echo "</ul>";
     echo "</div>";
+
+    // enter page -> results show -> 'multiPage' function is run -> displays 10 entries.
+    // if current entry is 1 and totalt pages is more than 10, then show 1->10
+    // else if current entry is less than 10, but more than 1, show 1->currentpage->10
+    // else if current entry is more than 10 and total pages is less than currentpage+5, show (currentpage-5)->currentpage->total pages
+    // else show (currentpage-5)->currentpage->(currentpage+4)
+
+
+    // if currentpage is less than 5 show 1->currentpage->total pages
+    // else if currentpage is more than 5, show currentpage-5->currentpage->total pages
+    // 
+
 
 }
