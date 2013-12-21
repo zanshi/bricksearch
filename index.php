@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <?php
         $searchterm = "";
         require 'header.php';
@@ -25,53 +25,15 @@
 
             console.log(setID);
 
-            //$ (parent).append( "extended.php?id=" + setID);
-
-/*            var request = $.ajax({
-                url: 'extended.php',
-                type: 'GET',
-                dataType: 'html',
-                context: parent,
-                data: {id: setID},
-            })
-            .done(function() {
-
-                console.log("success");
-            })
-            .fail(function() {
-                console.log("error");
-            })
-            .always(function() {
-                console.log("complete");
-            });*/
-
-/*            var xmlhttp = new XMLHttpRequest();
-
-            xmlhttp.onreadystatechange=function()
-            {
-                if (xmlhttp.readyState==4 && xmlhttp.status==200)
-                {
-                    var content = document.createTextNode(xmlhttp.responseText);
-                    parent.appendChild(content);
-                }
+            if(parent.nextSibling.className == "row extendedResults" ) {
+                parent.nextSibling.remove();
+            } else {
+                $.get("extended.php", { id: setID })
+                    .done(function (data) {
+                        $(parent).after(data);
+                        console.log("success");
+                    });
             }
-            xmlhttp.open("GET","extended.php?id="+setID, true);
-            xmlhttp.send();*/
-
-            if(parent.children[2]) {
-                //parent.children[2]
-            }
-
-            console.log(parent.innerHTML);
-
-            $.get("extended.php", { id: setID })
-                .done(function (data) {
-                    $(parent).after(data);
-                    console.log("success");
-                });
-
-
-
             
         }
 
@@ -133,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         </footer>
 
     </div>
-      <script src="js/script.js"></script>
+      <!-- <script src="js/script.js"></script> -->
 </body>
 
 </html>
