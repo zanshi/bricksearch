@@ -75,6 +75,10 @@ function mainSearch($con, $str, $start)
             mainSearchHtml($con, $row);
         }
 
+        if($nrOfResults > 20) {
+            multiPage($str, $nrOfResults, $start);
+        }
+
         mysqli_free_result($result);
 
     } else {
@@ -176,5 +180,27 @@ function handleImgUrl($con, $setID)
     }
 
     return $imgUrl;
+}
+
+function multiPage($str, $nrOfResults, $start) {
+
+    echo "<div id='multiPage'>";        
+        echo "<ul>";
+
+        if($start < 100) {
+            $i = 0;
+        } else {
+            $i = $start/20;
+        }
+
+        for(; $i < $nrOfResults/20; $i++) {
+            if($i == $start) {
+                echo "<li> <strong> " . $i . " </strong> </li>";
+            } else {
+                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . $i . "</a> </li>";
+            }
+        } 
+        echo "</ul>";
+    echo "</div>";
 
 }
