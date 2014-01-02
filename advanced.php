@@ -79,6 +79,11 @@
 	                	<label>Minifig</label>
 	                    <input type="text" name="setid">
                     </div>
+                    <div class="advRow"> 
+                        <label>Select</label> 
+                        <label for="part"><input type="radio" name="ADVopt1" value="part" id="part" checked>Part</label> 
+                        <label for="set"><input type="radio" name="ADVopt1" value="set" id="set">Set</label> 
+                    </div>
 
                     <p><div id="searchButton2"></div></p>
                 </form>

@@ -149,6 +149,9 @@ main {
 .advRow input {
     width: 200px;
 }
+.advRow label input[type=radio], input.radio { 
+    width : auto; 
+}
 
 .row {
     width: 70%;
