@@ -182,59 +182,48 @@ function handleImgUrl($con, $setID)
     return $imgUrl;
 }
 
+/**
+ * multiPage
+ * Function for listing pages of results when searching
+ */
 function multiPage($str, $nrOfResults, $start) {
 
     echo "<div id='multiPage'>";
         echo "<ul>";
 
-        $totalPages = ceil($nrOfResults/20);
+        $totalPages = floor($nrOfResults/20);
         $currentPage = ($start/20);
 
-        echo "total pages: " . $totalPages . '<br>';
-        echo "current page: " . $currentPage . '<br>';
-
-        if($currentPage <= 5) {
+        // Code for setting which page to start the loop and which
+        // page to stop
+        if($currentPage < 5) {
             $i = 0;
-        } else {
-            $i = ($currentPage-5);
-        }
-
-        if($totalPages < 10) {
+            $endPage = 8;
+        } else if($totalPages - $currentPage < 5) {
+            $i = ($totalPages - 8);
             $endPage = $totalPages;
-        } else if ($currentPage < 5 ) {
-            $endPage = 10;
         } else {
-            $endPage = ($currentPage + 5);
+            $i = ($currentPage - 4);
+            $endPage = ($currentPage + 4);
         }
 
-        echo 'start page: ' . $i;
-        echo '<br> end page: ' . $endPage . "</br>";
+        // Always print link to first result
+        echo "<li> <a href='index.php?searchterm=" . $str . "'><strong>First result </strong></a> </li>";
 
-        for(; $i < $endPage; $i++) {
-            echo 'i: ' . $i;
+        // Print the proper pages
+        for(; $i <= $endPage; $i++) {
 
             if($i == $currentPage) {
                 echo "<li> <strong> " . ($i+1) . " </strong> </li>";
-            } else if($i == 0 || $i == $totalPages-1) {
-                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'><strong>" . ($i+1) . "</strong></a> </li>";
-            }
-            else  {
+            } else  {
                 echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
             }
         }
+
+        // Always print link to last result
+        echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $totalPages*20 . "'><strong>Last result</strong></a> </li>";
+
         echo "</ul>";
     echo "</div>";
-
-    // enter page -> results show -> 'multiPage' function is run -> displays 10 entries.
-    // if current entry is 1 and totalt pages is more than 10, then show 1->10
-    // else if current entry is less than 10, but more than 1, show 1->currentpage->10
-    // else if current entry is more than 10 and total pages is less than currentpage+5, show (currentpage-5)->currentpage->total pages
-    // else show (currentpage-5)->currentpage->(currentpage+4)
-
-
-    // if currentpage is less than 5 show 1->currentpage->total pages
-    // else if currentpage is more than 5, show currentpage-5->currentpage->total pages
-    // 
-
 
 }
