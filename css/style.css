@@ -239,9 +239,12 @@ main {
 
 #disqus_thread {
     
-    width: 400px;
-    float: center;
-
+    width: 600px;
+    position: fixed;
+    border-style: 0px solid;
+    padding: 5px;
+    margin-left: 50%;
+    margin-right: 50%;
 }
 
 #searchButton {
