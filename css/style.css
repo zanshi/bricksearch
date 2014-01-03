@@ -237,6 +237,13 @@ main {
     z-index: 999;
 }
 
+#disqus_thread {
+    
+    width: 400px;
+
+
+}
+
 #searchButton {
     float: left;
     height: 44px;
