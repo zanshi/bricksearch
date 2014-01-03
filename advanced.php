@@ -31,6 +31,7 @@
             <ul>
                 <li><a href="index.php" class="nav">Home</a></li>
                 <li><a href="advanced.php" class="nav">Advanced search</a></li>
+                 <li><a href="about.php" class="nav">About</a></li>
             </ul>
         </nav>
 
