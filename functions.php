@@ -207,6 +207,10 @@ function multiPage($str, $nrOfResults, $start) {
             $endPage = ($currentPage + 4);
         }
 
+        if($totalPages < 9) {
+            $endPage = $totalPages;
+        }
+
         // Always print link to first result
         echo "<li> <a href='index.php?searchterm=" . $str . "'><strong>First result </strong></a> </li>";
 
