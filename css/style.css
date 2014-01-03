@@ -240,7 +240,6 @@ main {
 #disqus_thread {
     
     width: 600px;
-    position: fixed;
     border-style: 0px solid;
     padding: 5px;
     margin-left: 50%;
