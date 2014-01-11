@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
     <?php
         $searchterm = "";
         require 'header.php';
@@ -19,6 +20,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
     <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+    <link rel="shortcut icon" sizes="196x196" href="nice-highres.png">
 
     <script src="js/jquery-2.0.3.js"></script>
 
