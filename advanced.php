@@ -86,7 +86,7 @@
                         <label for="set"><input type="radio" name="ADVopt1" value="set" id="set">Set</label> 
                     </div>
 
-                    <p><div id="searchButton2"></div></p>
+                    <input type="submit" id="searchButton2" value="Search"></input>
                 </form>
 
            
