@@ -266,11 +266,15 @@ main {
 }
 
 #searchButton2 {
+    position: relative;
+    top: 40px;
+    left: -155px;
     height: 50px;
     width: 117px;
-    margin: 0 auto;
-    -webkit-transition: box-shadow 0.25s;
-    transition: box-shadow 0.25s;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    padding: 10px;
+    background: white;
 }
 
 .searchField {
