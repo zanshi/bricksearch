@@ -10,6 +10,7 @@
         require 'header.php';
     ?>
     <link rel="shortcut icon" type="image/x-icon" href="favicon2.png" />
+    <!--Fonts-->
     <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Patua+One">
@@ -50,6 +51,7 @@
 
 <body>
 
+    <!--Google Analytics-->
     <?php include_once("analyticstracking.php") ?>
 
     <div id="container">
