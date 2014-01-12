@@ -1,6 +1,9 @@
 <?php
 
-
+/**
+ * Connect to the specified MySQL database
+ * @return MySQL database connection
+ */
 function connect()
 {
     $con = mysqli_connect("koneko.se", "projekt", "tnmk30", "lego");
@@ -11,6 +14,11 @@ function connect()
     return $con;
 }
 
+/**
+ * Validate search string for security reasons
+ * @param  string $data Search string
+ * @return string
+ */
 function validate($data)
 {
     // Do something more here?
@@ -21,6 +29,11 @@ function validate($data)
     return $data;
 }
 
+/**
+ * Print website title
+ * @param  string $title
+ * @return void
+ */
 function printTitle($title)
 {
     echo "<title>";
@@ -31,6 +44,14 @@ function printTitle($title)
 
 }
 
+/**
+ * Main search function.
+ * Performs an SQL query and prints the results using other functions
+ * @param  MySQL database connection $con
+ * @param  string $str Search string
+ * @param  int $start Specifies the first result to be shown
+ * @return void
+ */
 function mainSearch($con, $str, $start)
 {
     /*$sql
@@ -59,11 +80,11 @@ function mainSearch($con, $str, $start)
         LIMIT $start , 20"
     ;
 
-    $calcTime = microtime(true);
+    //$calcTime = microtime(true);
 
     $result = mysqli_query($con, $sql);
 
-    $calcTime = microtime(true) - $calcTime;
+    //$calcTime = microtime(true) - $calcTime;
 
     $nrOfResults = countResults($con, $str);
 
@@ -87,6 +108,15 @@ function mainSearch($con, $str, $start)
 
 }
 
+
+
+/**
+ * Counts the total number of results from the
+ * specified search query
+ * @param  MySQL database connection $con MySQL connection
+ * @param  string $str Search string
+ * @return int $nrOfResults
+ */
 function countResults($con, $str) {
     $sql
         = "SELECT COUNT(*) AS results
@@ -105,6 +135,12 @@ function countResults($con, $str) {
 }
 
 
+/**
+ * Writes out an error message to the user if no results were found
+ * when searching.
+ * @param  string $str search string
+ * @return void
+ */
 function noResult($str) {
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
@@ -114,6 +150,17 @@ function noResult($str) {
 }
 
 
+/**
+ * Write results.
+ * 
+ * Starts by calling the handleImgUrl function to get the correct
+ * image URL.
+ * Afterwards, the info from $row, which contains a row of search results,
+ * is printed, along with the URL from the called function.
+ * @param  MySQL connection $con Connection to the database
+ * @param  Associative array $row
+ * @return void
+ */
 function mainSearchHtml($con, $row)
 {
 
@@ -131,9 +178,16 @@ function mainSearchHtml($con, $row)
 
 }
 
+/**
+ * Gets the image URL for the specified set
+ * @param  MySQL database connection $con
+ * @param  string $setID The Set ID
+ * @return string
+ */
 function handleImgUrl($con, $setID)
 {
 
+    // SQL query
     $sql
         = "SELECT images.*
         FROM sets, images
@@ -141,17 +195,21 @@ function handleImgUrl($con, $setID)
         AND images.itemID = '$setID'"
     ;
 
+    // Store the SQL query
     $result = mysqli_query($con, $sql);
     
+    // If query not empty
     if($result) {
 
+        // Store a row in an associative array
         $row = mysqli_fetch_assoc($result);
 
-
+        // If the row doesn't contain an item ID, then the specified set doesn't
+        // have an image. Sets the URL to a placeholder image
         if($row['itemID'] == NULL) {
             $imgUrl = "img/noimage.png";
         } else {
-            // Sätter ihop URL:en efter vad som $row innehåller.
+            // Puts together the URL according to what $row contains
             $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";
             $imgUrl = $imgDir . $row['itemTypeID'];
 
@@ -161,15 +219,16 @@ function handleImgUrl($con, $setID)
 
             $imgUrl .= "/";
 
-            // Om itemTypeID är P eller G så betyder det att objektet har ett colorID
+            // If itemTypeID is P or G it means the object has a colorID.
+            // In that case, add the color ID to the URL
             if ($row['itemTypeID'] == "P" || $row['itemTypeID'] == "G") {
                 $imgUrl = $imgUrl . $row['colorID'] . "/";
             }
 
-            // Lägger till itemID till URL:en
+            // Add the itemID to the URL
             $imgUrl = $imgUrl . $row['itemID'];
 
-            // Lägger till lämpliga filändelser
+            // Add appropriate file ending
             if ($row['has_gif'] == 1) {
                 $imgUrl = $imgUrl . ".gif";
             } elseif ($row['has_jpg'] == 1) {
@@ -182,9 +241,14 @@ function handleImgUrl($con, $setID)
     return $imgUrl;
 }
 
+
 /**
  * multiPage
  * Function for listing pages of results when searching
+ * @param  string $str Search string
+ * @param  int $nrOfResults The number of results
+ * @param  int $start Specifies on which page the user is
+ * @return void
  */
 function multiPage($str, $nrOfResults, $start) {
 
