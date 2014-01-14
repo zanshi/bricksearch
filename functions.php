@@ -138,6 +138,7 @@ function advSearch($con, $str, $start, $opt)
 
     } else {
         noResult($str);
+    }
 
 }
 
