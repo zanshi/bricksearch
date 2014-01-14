@@ -29,6 +29,15 @@
     <!--Splash Screen iOS-->
     <link href="assets/splashs/splash_1096.png" rel="apple-touch-startup-image" media="(device-height: 568px)">
     <link href="assets/splashs/splash_iphone_2x.png" rel="apple-touch-startup-image" sizes="640x960" media="(device-height: 480px)">
+   <!-- Prevent the webapp to change window while user click links-->
+    <script type="text/javascript">
+
+        (function(a,b,c){if(c in b&&b[c])
+            {var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;
+            while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},
+            !1)}})(document,window.navigator,"standalone")
+
+    </script>
 
     <script src="js/jquery-2.0.3.js"></script>
 
