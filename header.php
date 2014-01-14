@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-     <!--Fullscreen mode Android/iOS-->
-   <meta name="mobile-web-app-capable" content="yes">
+     <!--Fullscreen mode iOS-->
    <meta name="apple-mobile-web-app-capable" content="yes">
     <?php
         $searchterm = "";
@@ -27,6 +26,7 @@
     <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
     <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
     <link rel="shortcut icon" sizes="196x196" href="nice-highres.png">
+    <!--Splash Screen iOS-->
     <link href="assets/splashs/splash_1096.png" rel="apple-touch-startup-image" media="(device-height: 568px)">
     <link href="assets/splashs/splash_iphone_2x.png" rel="apple-touch-startup-image" sizes="640x960" media="(device-height: 480px)">
 
