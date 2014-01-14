@@ -21,12 +21,32 @@ function connect()
  */
 function validate($data)
 {
-    // Do something more here?
+    if (ctype_space($data) || empty($data) || $data == null) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validateStart($start)
+{
+    if (ctype_digit($start)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Clean user input from strange stuff
+ * @param  string $data User input
+ * @return string $data Return string
+ */
+function cleanInput($data)
+{
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);
-
-
 
     return $data;
 }
@@ -74,6 +94,7 @@ function mainSearch($con, $str, $start)
         LIMIT $start , 20"
     ;*/
 
+
     $sql
         = "SELECT sets.SetID, sets.Setname
         FROM sets
@@ -94,11 +115,11 @@ function mainSearch($con, $str, $start)
 
         //echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             mainSearchHtml($con, $row);
         }
 
-        if($nrOfResults > 20) {
+        if ($nrOfResults > 20) {
             multiPage($str, $nrOfResults, $start);
         }
 
@@ -112,11 +133,11 @@ function mainSearch($con, $str, $start)
 function advSearch($con, $str, $start, $opt)
 {
 
-    if($opt){
+    if ($opt) {
         $sql
             = "";
-    } else{
-        $sql 
+    } else {
+        $sql
             = "";
     }
 
@@ -128,11 +149,11 @@ function advSearch($con, $str, $start, $opt)
 
         echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
-        while($row = mysqli_fetch_assoc($result)) {
+        while ($row = mysqli_fetch_assoc($result)) {
             mainSearchHtml($con, $row);
         }
 
-        if($nrOfResults > 20) {
+        if ($nrOfResults > 20) {
             multiPage($str, $nrOfResults, $start);
         }
 
@@ -144,7 +165,6 @@ function advSearch($con, $str, $start, $opt)
 
 }
 
-
 /**
  * Counts the total number of results from the
  * specified search query
@@ -152,7 +172,8 @@ function advSearch($con, $str, $start, $opt)
  * @param  string $str Search string
  * @return int $nrOfResults
  */
-function countResults($con, $str) {
+function countResults($con, $str)
+{
     $sql
         = "SELECT COUNT(*) AS results
         FROM sets
@@ -169,14 +190,14 @@ function countResults($con, $str) {
     return $nrOfResults;
 }
 
-
 /**
  * Writes out an error message to the user if no results were found
  * when searching.
  * @param  string $str search string
  * @return void
  */
-function noResult($str) {
+function noResult($str)
+{
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
     echo        "Your search for <strong>" . $str . "</strong> gave no results. Please try again." . "\n";
@@ -184,10 +205,9 @@ function noResult($str) {
     echo "</div>" . "\n";
 }
 
-
 /**
  * Write results.
- * 
+ *
  * Starts by calling the handleImgUrl function to get the correct
  * image URL.
  * Afterwards, the info from $row, which contains a row of search results,
@@ -232,16 +252,16 @@ function handleImgUrl($con, $setID)
 
     // Store the SQL query
     $result = mysqli_query($con, $sql);
-    
+
     // If query not empty
-    if($result) {
+    if ($result) {
 
         // Store a row in an associative array
         $row = mysqli_fetch_assoc($result);
 
         // If the row doesn't contain an item ID, then the specified set doesn't
         // have an image. Sets the URL to a placeholder image
-        if($row['itemID'] == NULL) {
+        if ($row['itemID'] == null) {
             $imgUrl = "img/noimage.png";
         } else {
             // Puts together the URL according to what $row contains
@@ -276,7 +296,6 @@ function handleImgUrl($con, $setID)
     return $imgUrl;
 }
 
-
 /**
  * multiPage
  * Function for listing pages of results when searching
@@ -285,48 +304,48 @@ function handleImgUrl($con, $setID)
  * @param  int $start Specifies on which page the user is
  * @return void
  */
-function multiPage($str, $nrOfResults, $start) {
-
+function multiPage($str, $nrOfResults, $start)
+{
     echo "<div id='multiPage'>";
-        echo "<ul>";
+    echo "<ul>";
 
-        $totalPages = floor($nrOfResults/20);
-        $currentPage = ($start/20);
+    $totalPages = floor($nrOfResults/20);
+    $currentPage = ($start/20);
 
-        // Code for setting which page to start the loop and which
-        // page to stop
-        if($currentPage < 5) {
-            $i = 0;
-            $endPage = 8;
-        } else if($totalPages - $currentPage < 5) {
-            $i = ($totalPages - 8);
-            $endPage = $totalPages;
+    // Code for setting which page to start the loop and which
+    // page to stop
+    if ($currentPage < 5) {
+        $i = 0;
+        $endPage = 8;
+    } elseif ($totalPages - $currentPage < 5) {
+        $i = ($totalPages - 8);
+        $endPage = $totalPages;
+    } else {
+        $i = ($currentPage - 4);
+        $endPage = ($currentPage + 4);
+    }
+
+    if ($totalPages < 9) {
+        $endPage = $totalPages;
+    }
+
+    // Always print link to first result
+    echo "<li> <a href='index.php?searchterm=" . $str . "'><strong>First result </strong></a> </li>";
+
+    // Print the proper pages
+    for (; $i <= $endPage; $i++) {
+
+        if ($i == $currentPage) {
+            echo "<li> <strong> " . ($i+1) . " </strong> </li>";
         } else {
-            $i = ($currentPage - 4);
-            $endPage = ($currentPage + 4);
+            echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
         }
+    }
 
-        if($totalPages < 9) {
-            $endPage = $totalPages;
-        }
+    // Always print link to last result
+    echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $totalPages*20 . "'><strong>Last result</strong></a> </li>";
 
-        // Always print link to first result
-        echo "<li> <a href='index.php?searchterm=" . $str . "'><strong>First result </strong></a> </li>";
-
-        // Print the proper pages
-        for(; $i <= $endPage; $i++) {
-
-            if($i == $currentPage) {
-                echo "<li> <strong> " . ($i+1) . " </strong> </li>";
-            } else  {
-                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
-            }
-        }
-
-        // Always print link to last result
-        echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $totalPages*20 . "'><strong>Last result</strong></a> </li>";
-
-        echo "</ul>";
+    echo "</ul>";
     echo "</div>";
 
 }

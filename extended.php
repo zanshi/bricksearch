@@ -1,22 +1,22 @@
 <?php
 
-require "functions.php";
+require 'functions.php';
 
 /**
  * List year made, category name, parts names, id for parts, quantity, color
  * Will probably add more stuff
- * 
+ *
  */
 
 $setID = null;
 
-if (!empty($_GET['id'])) {
-    $setID = validate($_GET['id']);
+if (validate($_GET['id'])) {
+    $setID = cleanInput($_GET['id']);
 }
 
 $con = connect();
 
-if($con && $setID) {
+if ($con && $setID) {
 
     $query
         = "SELECT sets.year, categories.categoryName
@@ -34,16 +34,15 @@ if($con && $setID) {
             AND sets.setID = '$setID'"
     ;
 
-
-    if(mysqli_multi_query($con, $query)) {
+    if (mysqli_multi_query($con, $query)) {
         do {
-            
+
             mysqli_next_result($con);
-            if( $result = mysqli_store_result($con)) {
+            if ( $result = mysqli_store_result($con)) {
 
                 // If result contains only one row it means
                 // it's from the first query
-                if(mysqli_num_rows($result) == 1) {
+                if (mysqli_num_rows($result) == 1) {
                     $row = mysqli_fetch_assoc($result);
                     writeSetInfo($row);
 
@@ -56,19 +55,20 @@ if($con && $setID) {
 
             }
             // If no parts in set, close div tag
-            if(mysqli_more_results($con)) {
-                
+            if (mysqli_more_results($con)) {
+
             } else {
                 echo "</div>";
             }
-        } while(mysqli_more_results($con));
+        } while (mysqli_more_results($con));
     }
 
     mysqli_close($con);
 
 }
 
-function writeSetInfo($row) {
+function writeSetInfo($row)
+{
     echo "<div class='row extendedResults'>";
     echo    "<div class='moreSetInfo'>";
     echo        "<h2> Set Info </h2>";
@@ -88,10 +88,11 @@ function writeSetInfo($row) {
 
 }
 
-function writePartInfo($result) {
+function writePartInfo($result)
+{
     echo "<div class='partsContainer'>";
     echo    "<h2> Parts </h2>";
-    while($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
 
         echo "<div class='parts'>";
         echo    "<h3>Part name</h3>";
@@ -107,5 +108,3 @@ function writePartInfo($result) {
     echo "</div>";
 
 }
-
-

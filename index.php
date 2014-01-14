@@ -1,6 +1,8 @@
 
-<?php require 'header.php'; ?>
-
+<?php
+    require 'functions.php';
+    require 'header.php';
+?>
 
         <main>
 
@@ -14,23 +16,38 @@
             </div>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+/*if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if (!empty($_GET["searchterm"])) {
         $searchterm = validate($_GET["searchterm"]);
 
-        if(!empty($_GET["start"])) {
+        if (!empty($_GET["start"])) {
             $start = validate($_GET["start"]);
             mainSearch(connect(), $searchterm, $start);
         } else {
             mainSearch(connect(), $searchterm, 0);
         }
     }
-    
+
+}*/
+
+if (isset($_GET["searchterm"])) {
+    if (validate($_GET["searchterm"])) {
+        $searchterm = cleanInput($_GET["searchterm"]);
+
+        if (isset($_GET["start"])) {
+            $start = $_GET["start"];
+            if (validateStart($start)) {
+                mainSearch(connect(), $searchterm, $start);
+            }
+        } else {
+            mainSearch(connect(), $searchterm, 0);
+        }
+    }
+
 }
 
 ?>
 
         </main>
 
-
-<?php require 'footer.php'; ?>
+<?php require 'footer.php';

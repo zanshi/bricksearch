@@ -5,8 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <?php
+
         $searchterm = "";
-        require 'title.php';
+        if (isset($_GET["searchterm"])) {
+            if (validate($_GET["searchterm"])) {
+                $searchterm = cleanInput($_GET["searchterm"]);
+                printTitle($searchterm);
+            } else {
+                printTitle(null);
+            }
+        }
     ?>
     <!--Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="favicon2.png" />
@@ -41,13 +49,13 @@
 
     <script>
 
-        function loadExtended(parent) {
-
+        function loadExtended(parent)
+        {
             var setID = parent.children[1].children[1].innerHTML;
 
             console.log(setID);
 
-            if(parent.nextSibling.className == "row extendedResults" ) {
+            if (parent.nextSibling.className == "row extendedResults") {
                 parent.nextSibling.remove();
             } else {
                 $.get("extended.php", { id: setID })
@@ -56,7 +64,7 @@
                         console.log("success");
                     });
             }
-            
+
         }
 
     </script>
