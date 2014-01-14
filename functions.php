@@ -107,7 +107,39 @@ function mainSearch($con, $str, $start)
     }
 
 }
+function advSearch($con, $str, $start, $opt)
+{
 
+    if($opt){
+        $sql
+            = "";
+    } else{
+        $sql 
+            = "";
+    }
+
+    $result = mysqli_query($con, $sql);
+
+    $nrOfResults = countResults($con, $str);
+
+    if ($nrOfResults != 0) {
+
+        echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
+
+        while($row = mysqli_fetch_assoc($result)) {
+            mainSearchHtml($con, $row);
+        }
+
+        if($nrOfResults > 20) {
+            multiPage($str, $nrOfResults, $start);
+        }
+
+        mysqli_free_result($result);
+
+    } else {
+        noResult($str);
+
+}
 
 
 /**
