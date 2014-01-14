@@ -4,8 +4,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-     <!--Fullscreen mode iOS-->
-   <meta name="apple-mobile-web-app-capable" content="yes">
     <?php
         $searchterm = "";
         require 'title.php';
