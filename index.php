@@ -1,19 +1,16 @@
 
-<?php
+<?php require 'header.php';?>
 
-    require 'header.php';
-?>
+<main>
 
-        <main>
+    <div class="mainSearch">
 
-            <div class="mainSearch">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+            <input type="text" name="searchterm" placeholder="Search for name or ID of a Lego set" class="searchField" value="<?php echo $searchterm; ?>">
+            <input type="submit" id="searchButton" value="">
+        </form>
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-                    <input type="text" name="searchterm" placeholder="Search for name or ID of a Lego set" class="searchField" value="<?php echo $searchterm; ?>"></input>
-                    <input type="submit" id="searchButton" value=""></input>
-                </form>
-
-            </div>
+    </div>
 
 <?php
 /*if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -48,6 +45,6 @@ if (isset($_GET["searchterm"])) {
 
 ?>
 
-        </main>
+</main>
 
 <?php require 'footer.php';

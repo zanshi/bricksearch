@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <?php
-        require 'functions.php';
-        $searchterm = "";
-        if (isset($_GET["searchterm"])) {
-            if (validate($_GET["searchterm"])) {
-                $searchterm = cleanInput($_GET["searchterm"]);
-                printTitle($searchterm);
-            }
-        } else {
-            printTitle(null);
-        }
+    require 'functions.php';
+    $searchterm = "";
+    if (isset($_GET["searchterm"])) {
+    if (validate($_GET["searchterm"])) {
+        $searchterm = cleanInput($_GET["searchterm"]);
+        printTitle($searchterm);
+    }
+    } else {
+        printTitle(null);
+    }
     ?>
     <!--Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="favicon2.png" />
@@ -62,8 +62,9 @@
 
         <nav>
             <ul>
-                <li><a href="index.php" class="nav">Home</a></li>
-                <li><a href="advanced.php" class="nav">Advanced search</a></li>
-                 <li><a href="about.php" class="nav">About</a></li>
+                <li><a href="index.php" >Home</a></li>
+                <li><a href="advanced.php">Advanced search</a></li>
+                <li><a href="stats.php">Stats</a></li>
+                <li><a href="about.php">About</a></li>
             </ul>
         </nav>

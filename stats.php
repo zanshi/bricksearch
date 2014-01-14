@@ -1,14 +1,15 @@
+<?php require 'header.php';?>
 
-<?php
-    require 'header.php';
-?>
+<main>
 
-        <main>
+<div class="row">
+
+    <h2>Stats!</h2>
+    
+</div>
 
 
 
-
-
-        </main>
+</main>
 
 <?php require 'footer.php';

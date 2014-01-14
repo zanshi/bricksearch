@@ -97,6 +97,7 @@ nav ul {
 
 nav a {
     display: inline-block;
+    margin-top: 10px;
     padding: 10px;
     background: white;
     font-family: 'Press Start 2P', cursive;
