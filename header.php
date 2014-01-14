@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
      <!--Fullscreen mode Android/iOS-->
    <meta name="mobile-web-app-capable" content="yes">
+   <meta name="apple-mobile-web-app-capable" content="yes">
     <?php
         $searchterm = "";
         require 'title.php';
