@@ -318,6 +318,15 @@ footer {
     width: 100%;
 }
 
+footer p {
+    
+    text-align: center;
+    color: White;
+    font-weight: 900;
+
+}
+
+
 
 
 @media (max-width: 800px) {
