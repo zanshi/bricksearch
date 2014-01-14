@@ -310,30 +310,13 @@ li>a {
 
 
 footer {
-    position: fixed;
+    position: absolute;
+    left: 0;
     bottom: 0;
-    margin: 0 0 30px 30px;
-    /* background : #ddd; */
+    height: 100px;
+    width: 100%;
 }
 
-footer p {
-    display: inline-block;
-    padding: 7px;
-    background: white;
-    font-size: 0.9em;
-    color: rgb(5, 144, 221);
-    border: 1px solid rgb(5, 102, 145);
-    border: 1px solid rgba(5, 102, 145, 0.55);
-    border-radius: 2px;
-    box-shadow: 0 0 3px rgba(5, 144, 221, 0.5);
-    -webkit-transition: color 0.5s, background-color 0.5s, display 0.5s;
-    transition: color 0.5s, background-color 0.5s, display 0.5s;
-}
-
-footer p:hover {
-    background-color: rgb(5, 102, 145);
-    color: white;
-}
 
 
 @media (max-width: 800px) {
