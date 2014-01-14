@@ -8,7 +8,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <?php
         $searchterm = "";
-        require 'header.php';
+        require 'title.php';
     ?>
     <!--Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="favicon2.png" />
