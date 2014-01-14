@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <?php
-        $searchterm = "";
-        include 'header.php';
-    ?>
-
-    <link rel="stylesheet" href="css/normalize.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Patua+One">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
-
-</head>
-
-<body>
-
-    <?php include_once("analyticstracking.php") ?>
-    
-    <div id="container">
+<?php require 'header.php';?>
 
         <main>
 
@@ -49,6 +26,8 @@
         </footer>
 
     </div>
+
+    <script src="js/script.js"></script>
 
      <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */

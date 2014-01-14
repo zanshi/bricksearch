@@ -8,27 +8,23 @@
     });
 });*/
 
-$(document).ready(function($) {
-	
-	var initalPos = $(".mainSearch").offset().top;
 
-	$(window).scroll(function(event) {
 
-		if(parseInt($(window).scrollTop()) > (initalPos - 10)) {
 
-			$('.mainSearch').addClass('down');
-			$('main').css("padding-top", "44px");
+	function loadExtended(parent)
+	{
+	    var setID = parent.children[1].children[1].innerHTML;
 
-		} else {
+	    console.log(setID);
 
-			if($('.mainSearch').hasClass('down')) {
+	    if (parent.nextSibling.className == "row extendedResults") {
+	        parent.nextSibling.remove();
+	    } else {
+	        $.get("extended.php", { id: setID })
+	            .done(function (data) {
+	                $(parent).after(data);
+	                console.log("success");
+	            });
+	    }
 
-				$('main').css("padding-top", "0px");
-				$('.mainSearch').removeClass('down');
-
-			}
-		}
-
-	});
-
-});
+	}

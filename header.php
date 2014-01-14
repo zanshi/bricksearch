@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <?php
-
+        require 'functions.php';
         $searchterm = "";
         if (isset($_GET["searchterm"])) {
             if (validate($_GET["searchterm"])) {
@@ -46,27 +46,6 @@
 
     <script src="js/jquery-2.0.3.js"></script>
 
-    <script>
-
-        function loadExtended(parent)
-        {
-            var setID = parent.children[1].children[1].innerHTML;
-
-            console.log(setID);
-
-            if (parent.nextSibling.className == "row extendedResults") {
-                parent.nextSibling.remove();
-            } else {
-                $.get("extended.php", { id: setID })
-                    .done(function (data) {
-                        $(parent).after(data);
-                        console.log("success");
-                    });
-            }
-
-        }
-
-    </script>
 
 </head>
 
