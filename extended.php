@@ -37,6 +37,8 @@ if($con && $setID) {
 
     if(mysqli_multi_query($con, $query)) {
         do {
+            
+            mysqli_next_result($con);
             if( $result = mysqli_store_result($con)) {
 
                 // If result contains only one row it means
@@ -59,7 +61,7 @@ if($con && $setID) {
             } else {
                 echo "</div>";
             }
-        } while(mysqli_next_result($con));
+        } while(mysqli_more_results($con));
     }
 
     mysqli_close($con);
