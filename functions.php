@@ -90,7 +90,7 @@ function mainSearch($con, $str, $start)
 
     if ($nrOfResults != 0) {
 
-        echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
+        //echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
         while($row = mysqli_fetch_assoc($result)) {
             mainSearchHtml($con, $row);
