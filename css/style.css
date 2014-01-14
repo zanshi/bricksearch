@@ -319,10 +319,11 @@ footer {
 }
 
 footer p {
-    padding-top: 20px;
+    padding-top: 90px;
     text-align: center;
     color: #0076a8;
     font-weight: 900;
+    font-size: small;
 }
 
 
