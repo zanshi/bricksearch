@@ -310,7 +310,7 @@ li>a {
 
 
 footer {
-    background-color: #0076a8; 
+    background-color: #0590DD; 
     position: absolute;
     left: 0;
     bottom: 0;
@@ -319,11 +319,11 @@ footer {
 }
 
 footer p {
-    
+    padding-top: 20px;
     text-align: center;
-    color: White;
+    color: #0076a8;
     font-weight: 900;
-
+    font-size: 20pt;
 }
 
 
