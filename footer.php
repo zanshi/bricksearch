@@ -5,7 +5,7 @@
             <!-- Social Icons -->
 			  <ul class="icons">
 				<li><a href="http://www.liu.se/utbildning/program/medieteknik?l=sv"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				width="45px" height="45px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+				width="40px" height="40px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
 				<path class="social-svg" fill="#444444" d="M398.08,230.034V83.021h-42.683V232.59c0,31.368-12.407,57.27-39.765,57.27
 				c-25.895,0-42.314-20.429-42.314-57.27V83.021h-43.776v147.013c0,44.138,6.566,63.836,26.264,80.616
 				c14.226,12.039,29.182,17.874,58.37,17.874c28.813,0,43.044-6.198,56.538-17.874C390.783,293.508,398.08,269.793,398.08,230.034"/>
@@ -15,7 +15,7 @@
 				c0,12.595-10.221,22.816-22.829,22.816C154.915,127.663,144.693,117.442,144.693,104.847L144.693,104.847z"/>
 				</svg></a></li>
 				
-				<li><a href="mailto:bricksearch.liu@gmail.com"><svg width="35px" height="35px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+				<li><a href="mailto:bricksearch.liu@gmail.com"><svg width="40px" height="40px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
 		    	<title>Email</title>
 		    	<description>icon</description>
 		    	<defs></defs>
@@ -23,7 +23,7 @@
 		        <path class="social-svg" d="M38.8740909,62.6461034 C40.8760013,60.0774955 44.0017354,58.4312 47.525,58.4312 L157.05,58.4312 C159.678733,58.4312 162.085007,59.3476157 163.968171,60.8797968 L163.968171,60.8797969 L99.75,94.8175812 L38.8740909,62.6461034 Z M36.8768341,66.781991 C36.6754632,67.6145981 36.5688,68.4849736 36.5688,69.3812 L36.5688,129.6188 C36.5688,135.6864 41.4574,140.5688 47.525,140.5688 L157.05,140.5688 C163.1176,140.5688 168,135.6864 168,129.6188 L168,69.3812 C168,67.6380902 167.597052,65.9927958 166.878815,64.5329757 L99.7671275,100 L99.75,99.9564542 L99.7328725,100 L36.8768341,66.781991 Z M100,0 C44.7714,0 0,44.7714 0,100 C0,155.2286 44.7714,200 100,200 C155.2286,200 200,155.2286 200,100 C200,44.7714 155.2286,0 100,0 Z" id="Email" fill="#444444" sketch:type="MSShapeGroup"></path>
 		    	</g></svg></a></li>
 				
-				<li><a href="http://github.com/zanshi/bricksearch"><svg width="35px" height="35px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+				<li><a href="http://github.com/zanshi/bricksearch"><svg width="40px" height="40px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     		    <title>GitHub</title>
     			<description>icon</description>
     			<defs></defs>
