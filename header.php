@@ -4,17 +4,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <?php
+<?php
     require 'functions.php';
     $searchterm = "";
-    if (isset($_GET["searchterm"])) {
+    $searchOPT = 0;
+    $year = "";
+    $cname = "";
+    $id = "";
+    $name = "";
+if (isset($_GET["searchterm"])) {
     if (validate($_GET["searchterm"])) {
         $searchterm = cleanInput($_GET["searchterm"]);
         printTitle($searchterm);
     }
-    } else {
-        printTitle(null);
-    }
+} else {
+    printTitle(null);
+}
     ?>
     <!--Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="favicon2.png" />

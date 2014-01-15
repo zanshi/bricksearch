@@ -63,11 +63,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
 
-    $searchOPT = 0;
-    $cid = "";
-    $cname = "";
-    $id = "";
-    $name = "";
+
 
     if (isset($_GET["advOPT1"])) {
     $searchOPT = $_GET['advOPT1'];
