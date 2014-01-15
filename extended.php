@@ -109,5 +109,6 @@ function writePartInfo($result, $con)
         echo "</div>";
     }
     echo "</div>";
+    echo "</div>";
 
 }
