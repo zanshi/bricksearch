@@ -129,7 +129,7 @@ function writePartInfo($result, $con)
             echo        "<p>" . $row['colorName'] . "</p>";
             echo "</div>";
         } else {
-            echo "<h3>No parts in this set. </h3>";
+            echo "<h3 class='noparts'>No parts in this set. </h3>";
         }
     } while ($row = mysqli_fetch_assoc($result));
     echo "</div>";

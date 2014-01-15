@@ -323,6 +323,10 @@ main {
     margin: 0 auto;
 }
 
+.noparts{
+	text-align: center;
+}
+
 .down {
     position: fixed;
     top: 10px;
