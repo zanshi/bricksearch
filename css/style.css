@@ -37,6 +37,14 @@ h2 {
     text-align: center;
 }
 
+h2left {
+    margin: 0;
+    font-size: 1.7em;
+    font-weight: bold;
+    color: #0076a8;
+    text-align: left;
+}
+
 h3 {
     margin: 0;
     font-size: 1em;
@@ -248,12 +256,12 @@ main {
 
 .moreSetInfo {
     float: left;
-    width: 30%;
+    width: 15%;
 }
 
 .partsContainer {
     float: left;
-    width: 70%;
+    width: 85%;
 }
 
 .parts {
