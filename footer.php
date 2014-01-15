@@ -5,8 +5,8 @@
             <!-- Social Icons -->
 						<ul class="icons">
 							<li><a href="#" class="social-facebook"><span></span></a></li>
-							<li><a href="#" class="social-github"><span>Github</span></a></li>
-							<li><a href="#" class="social-mail"><span>Email</span></a></li>
+							<li><a href="#" class="social-github"><span></span></a></li>
+							<li><a href="#" class="social-mail"><span></span></a></li>
 						</ul>
         </footer>
 

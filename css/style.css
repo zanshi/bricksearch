@@ -17,6 +17,7 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+
 h1 {
     margin: 5px;
     font-family: 'Press Start 2P', cursive;
@@ -83,6 +84,24 @@ header {
     /* background         : rgba(25,155,224,0.7); */
 }
 
+footer {
+    background-color: #00A4E1; 
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+}
+
+footer p {
+    margin-top: 40px;
+    text-align: center;
+    color: #0076a8;
+    font-weight: 900;
+    font-size: x-large;
+}
+
+
 nav {
     position: relative;
     text-align: center;
@@ -125,6 +144,11 @@ nav a:active {
     background: white;
     color: rgb(24, 157, 219);
     box-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2);
+}
+
+.icons{
+    margin-left: 20px;
+    margin-top: 40px;
 }
 
 .social-github{
@@ -333,27 +357,6 @@ li>a {
    clear: both; height: 120px; /* height = footer + margin */
     
 }
-
-
-footer {
-    background-color: #00A4E1; 
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-}
-
-footer p {
-    margin-top: 40px;
-    text-align: center;
-    color: #0076a8;
-    font-weight: 900;
-    font-size: x-large;
-}
-
-
-
 
 @media (max-width: 800px) {
     h1 {
