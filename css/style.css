@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    margin: 0 0 150px; /* bottom = footer height */
+    margin: 0 0 100px; /* bottom = footer height */
     background: url(../img/cubes.png);
     font-family: 'Open Sans', sans-serif;
 }
@@ -316,7 +316,7 @@ li>a {
 
 
 footer {
-    margin-top: 100px;
+    padding-top: 100px;
     background-color: #00A4E1; 
     position: absolute;
     left: 0;
