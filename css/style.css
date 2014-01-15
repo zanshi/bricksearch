@@ -159,10 +159,10 @@ nav a:active {
     right: 40px;
 }
 
-.icons li a:hover {
-    opacity: 0.5;
-}
+.social-svg:hover{
+    fill: #FFFFFF;
 
+}
 
 
 #container {
