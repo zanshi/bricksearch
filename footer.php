@@ -1,6 +1,6 @@
 		<div class="clear"></div>
         <footer>
-            <p>© 2013 BrickSearch</p>
+            <p>Brick Search</p>
 
             <!-- Social Icons -->
 			  <ul class="icons">
