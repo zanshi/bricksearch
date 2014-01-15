@@ -165,18 +165,9 @@ nav a:active {
     right: 40px;
 }
 
-.facebook:hover {
-   background-image: url('Facebook-dark.svg');
+.icons:hover {
+   color: white;
 }
-
-.github:hover {
-   background-image: url('GitHub-dark.svg');
-}
-
-.email:hover {
-   background-image: url('Email-dark.svg');
-}
-
 
 
 
