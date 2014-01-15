@@ -88,11 +88,7 @@ if (count($_GET) > 0 && $con = connect()) {
             $name = cleanInput($_GET["name"]);
         }
     }
-<<<<<<< HEAD
-    if ($year != null || $cname != null || $id != null || $name != null) {
-=======
     if ($year != "" || $cname != "" || $id != "" || $name != "") {
->>>>>>> fixes and stuff
         if (isset($_GET["start"])) {
             if (validateStart($_GET["start"])) {
                 $start = cleanInput($_GET["start"]);
