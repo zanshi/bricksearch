@@ -37,6 +37,8 @@ h2 {
     text-align: center;
 }
 
+
+
 h3 {
     margin: 0;
     font-size: 1em;
@@ -85,7 +87,7 @@ header {
 }
 
 footer {
-    background-color: #00A4E1; 
+    background-color: #1E1E1E; 
     position: absolute;
     left: 0;
     bottom: 0;
@@ -96,7 +98,7 @@ footer {
 footer p {
     margin-top: 40px;
     text-align: center;
-    color: #0076a8;
+    color: #444444;
     font-weight: 900;
     font-size: x-large;
 }
@@ -153,14 +155,16 @@ nav a:active {
 .icons{
 
     position:absolute;
-    top: 30px;
+    top: 20px;
     right: 40px;
+    opacity: .5;
 }
 
-.icons ul li{
-    opacity:.5;
+.icons ul li img:hover {
+    color:rgb(255,255,255);
+    background-color:rgb(255,255,255);
+    opacity: 1;
 }
-.icons ul li:hover {opacity: 1;}
 
 
 
@@ -235,6 +239,10 @@ main {
     font-size: 17px;
 }
 
+.setinfo {
+    text-align: left;
+}
+
 .setid {
     float: right;
     margin-right: 30px;
@@ -248,12 +256,12 @@ main {
 
 .moreSetInfo {
     float: left;
-    width: 30%;
+    width: 15%;
 }
 
 .partsContainer {
     float: left;
-    width: 70%;
+    width: 85%;
 }
 
 .parts {

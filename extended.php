@@ -71,7 +71,7 @@ function writeSetInfo($row)
 {
     echo "<div class='row extendedResults'>";
     echo    "<div class='moreSetInfo'>";
-    echo        "<h2> Set Info </h2>";
+    echo        "<h2 class='setinfo'> Set Info </h2.setinfo>";
     echo        "<h3> Year </h3>";
     echo        "<p>" . $row['year'] . "</p>";
     echo        "<h3> Category </h3>";
