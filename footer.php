@@ -15,13 +15,11 @@
 				c0,12.595-10.221,22.816-22.829,22.816C154.915,127.663,144.693,117.442,144.693,104.847L144.693,104.847z"/>
 				</svg></a></li>
 
-				<li><a href="http://www.medieteknik.nu"> <svg version="1.1"
-				 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-				 x="0px" y="0px" width="394px" height="187px" viewBox="0 0 394 187" enable-background="new 0 0 394 187" xml:space="preserve">
-				<defs>
-				</defs>
-				<rect class="social-svg" fill="#A6A6A6" width="187" height="187"/>
-				<rect class="social-svg" x="207" fill="#BFBFBF" width="187" height="187"/>
+				<li><a href="http://www.medieteknik.nu"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+				width="40px" height="40px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+				<rect x="3" y="103" fill="#A6A6A6" width="187" height="187"/>
+				<rect x="210" y="103" fill="#BFBFBF" width="187" height="187"/>
+				</svg>
 				</svg>
 				</a></li>
 				
