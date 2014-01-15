@@ -3,11 +3,11 @@
             <p>© 2013 BrickSearch</p>
 
             <!-- Social Icons -->
-						<ul class="icons">
-							<li><a href="#" class="social-facebook"><span></span></a></li>
-							<li><a href="#" class="social-github"><span></span></a></li>
-							<li><a href="#" class="social-mail"><span></span></a></li>
-						</ul>
+			  <ul class="icons">
+				<li><a href="#"><img src="images/facebook.png" /></a></li>
+				<li><a href="#"><img src="images/twitter.png" /></a></li>
+				<li><a href="#"><img src="images/github.png" /></a></li>
+			  </ul>
         </footer>
 
     </div>
