@@ -159,16 +159,25 @@ nav a:active {
 
 
 .icons{
-    
+
     position:absolute;
     top: 30px;
     right: 40px;
 }
 
-.icons ul li{
-    opacity:.5;
+.facebook:hover {
+   background-image: url('Facebook-dark.svg');
 }
-.icons ul li:hover {opacity: 1;}
+
+.github:hover {
+   background-image: url('GitHub-dark.svg');
+}
+
+.email:hover {
+   background-image: url('Email-dark.svg');
+}
+
+
 
 
 
