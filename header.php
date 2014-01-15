@@ -24,9 +24,7 @@ if (isset($_GET["searchterm"])) {
     <!--Favicon-->
     <link rel="shortcut icon" type="image/x-icon" href="favicon2.png" />
     <!--Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Patua+One">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
     <!--CSS-->
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
