@@ -136,13 +136,13 @@ function mainSearch($con, $str, $start)
  * @param  MySQL database connection $con
  * @param  int $start Specifies the first result to be shown
  * @param  int $opt determines which search function that should be used 
- * @param  string $cid colorID/categoryID search string
+ * @param  string $year year search string
  * @param  string $cname color/category search string
  * @param  string $id SetID/PartID search string
  * @param  string $name Setname/Partname searchstring
  * @return void
  */
-function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
+function advSearch($con, $start, $opt, $year, $cname, $id, $name)
 {
 
     if ($opt == 2) {
@@ -160,29 +160,29 @@ function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
             = "SELECT sets.SetID, sets.Setname
                 FROM sets, categories
                 WHERE sets.catID = categories.catid
-                AND sets.catID LIKE '%$cid%'
+                AND sets.Year LIKE '%$year%'
                 AND categories.categoryname LIKE '%$cname%'
                 AND sets.SetID LIKE '%$id%'
                 AND sets.Setname LIKE '%$name%'
                 LIMIT $start , 20";
-                $searchUrl = "advanced.php?cid=" . $cid . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
+                $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
     } elseif ($opt == 1) {
         $sql
             = "SELECT parts.PartID, parts.Partname
                 FROM parts, inventory, colors
                 WHERE inventory.ItemID = parts.PartID
                 AND inventory.ColorID = colors.ColorID
-                AND inventory.ColorID LIKE '%$cid%'
+                AND inventory.ColorID LIKE '%$year%'
                 AND colors.Colorname LIKE '%$cname%'
                 AND parts.PartID LIKE '%$id%'
                 AND parts.Partname LIKE '%$name%'
                 LIMIT $start , 20";
-                $searchUrl = "advanced.php?cid=" . $cid . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
+                $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
     }
 
     $result = mysqli_query($con, $sql);
 
-    $nrOfResults = countResults($con, $opt, $cid, $cname, $id, $name);
+    $nrOfResults = countResults($con, $opt, $year, $cname, $id, $name);
 
     
 
@@ -213,7 +213,7 @@ function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
  * @param  string $str Search string
  * @return int $nrOfResults
  */
-function countResults($con, $opt, $cid, $cname, $id, $name)
+function countResults($con, $opt, $year, $cname, $id, $name)
 {
  /*
     $sql
@@ -236,7 +236,7 @@ function countResults($con, $opt, $cid, $cname, $id, $name)
             = "SELECT COUNT(*) AS results
                 FROM sets, categories
                 WHERE sets.catID = categories.catid
-                AND sets.catID LIKE '%$cid%'
+                AND sets.Year LIKE '%$year%'
                 AND categories.categoryname LIKE '%$cname%'
                 AND sets.SetID LIKE '%$id%'
                 AND sets.Setname LIKE '%$name%'
@@ -247,7 +247,7 @@ function countResults($con, $opt, $cid, $cname, $id, $name)
                 FROM parts, inventory, colors
                 WHERE inventory.ItemID = parts.PartID
                 AND inventory.ColorID = colors.ColorID
-                AND inventory.ColorID LIKE '%$cid%'
+                AND inventory.ColorID LIKE '%$year%'
                 AND colors.Colorname LIKE '%$cname%'
                 AND parts.PartID LIKE '%$id%'
                 AND parts.Partname LIKE '%$name%'

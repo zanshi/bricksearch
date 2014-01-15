@@ -6,11 +6,11 @@
 
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
                 <div class="advRow">
-                    <label>Cid</label>
-                    <input type="text" name="cid" >
+                    <label>Year</label>
+                    <input type="text" name="year" >
                 </div>
                 <div class="advRow">
-                    <label>Cname</label>
+                    <label>Category</label>
                     <input type="text" name="cname">
                 </div>
                 <div class="advRow">
@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
     if (isset($_GET["advOPT1"])) {
     $searchOPT = $_GET['advOPT1'];
     }
-    if (isset($_GET["cid"])) {
+    if (isset($_GET["year"])) {
     $year = cleanInput($_GET["year"]);
     }
     if (isset($_GET["cname"])) {
@@ -77,12 +77,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
     if (isset($_GET["name"])) {
     $name = cleanInput($_GET["name"]);
     }
-    if ($searchOPT != null || $cid != null || $cname != null || $id != null || $name != null) {
+    if ($searchOPT != null || $year != null || $cname != null || $id != null || $name != null) {
         if (isset($_GET["start"])) {
             $start = cleanInput($_GET["start"]);
-            advSearch($con, $start, $searchOPT, $cid, $cname, $id, $name);
+            advSearch($con, $start, $searchOPT, $year, $cname, $id, $name);
         } else {
-            advSearch($con, 0, $searchOPT, $cid, $cname, $id, $name);
+            advSearch($con, 0, $searchOPT, $year, $cname, $id, $name);
         }
     }
 }
