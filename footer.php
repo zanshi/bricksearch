@@ -5,7 +5,7 @@
             <!-- Social Icons -->
 			  <ul class="icons">
 				<li><a href="http://www.liu.se/utbildning/program/medieteknik?l=sv"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				width="35px" height="35px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
+				width="45px" height="45px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
 				<path class="social-svg" fill="#444444" d="M398.08,230.034V83.021h-42.683V232.59c0,31.368-12.407,57.27-39.765,57.27
 				c-25.895,0-42.314-20.429-42.314-57.27V83.021h-43.776v147.013c0,44.138,6.566,63.836,26.264,80.616
 				c14.226,12.039,29.182,17.874,58.37,17.874c28.813,0,43.044-6.198,56.538-17.874C390.783,293.508,398.08,269.793,398.08,230.034"/>
