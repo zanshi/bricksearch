@@ -102,6 +102,8 @@ function mainSearch($con, $str, $start)
 
     $result = mysqli_query($con, $sql);
 
+    $searchUrl = "index.php?searchterm=" . $str;
+
     //$calcTime = microtime(true) - $calcTime;
 
     $nrOfResults = countResults($con, $str);
@@ -115,7 +117,7 @@ function mainSearch($con, $str, $start)
         }
 
         if ($nrOfResults > 20) {
-            multiPage($str, $nrOfResults, $start);
+            multiPage($searchUrl, $nrOfResults, $start);
         }
 
         mysqli_free_result($result);
@@ -327,7 +329,7 @@ function handleImgUrl($con, $setID)
  * @param  int $start Specifies on which page the user is
  * @return void
  */
-function multiPage($str, $nrOfResults, $start)
+function multiPage($searchUrl, $nrOfResults, $start)
 {
     echo "<div id='multiPage'>";
     echo "<ul>";
@@ -340,7 +342,7 @@ function multiPage($str, $nrOfResults, $start)
     if ($currentPage < 5) {
         $i = 0;
         $endPage = 8;
-    } elseif ($totalPages - $currentPage < 5) {
+    } else if ($totalPages - $currentPage < 5) {
         $i = ($totalPages - 8);
         $endPage = $totalPages;
     } else {
@@ -353,7 +355,7 @@ function multiPage($str, $nrOfResults, $start)
     }
 
     // Always print link to first result
-    echo "<li> <a href='index.php?searchterm=" . $str . "'><strong>First result </strong></a> </li>";
+    echo "<li> <a href='" . $searchUrl . "'><strong>First result </strong></a> </li>";
 
     // Print the proper pages
     
@@ -363,13 +365,13 @@ function multiPage($str, $nrOfResults, $start)
             if ($i == $currentPage) {
                 echo "<li> <strong> " . ($i+1) . " </strong> </li>";
             } else {
-                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
+                echo "<li> <a href='" . $searchUrl . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
             }
         }
     }
 
     // Always print link to last result
-    echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $totalPages*20 . "'><strong>Last result</strong></a> </li>";
+    echo "<li> <a href='" . $searchUrl . "&start=" . $totalPages*20 . "'><strong>Last result</strong></a> </li>";
 
     echo "</ul>";
     echo "</div>";
