@@ -157,6 +157,18 @@ nav a:active {
     right: 40px;
 }
 
+.icons ul {margin: 0; padding:0;}
+.icons ul li{
+    list-style: none;
+    display:block;
+    float: right;
+    background: #393939;
+    padding:100px 10px 5px 10px;
+    margin: 1px;
+    opacity: .5;
+}
+.icons ul li:hover {opacity: 1;}
+
 
 
 #container {
