@@ -394,13 +394,16 @@ li>a {
         width: 100%;
     }
 
-    footer {
-        visibility: hidden;
+    #disqus_thread {
+        width: 500px;
     }
 }
 
 @media (max-width: 650px) {
     body {
         font-size: 80%;
+    }
+    #disqus_thread {
+        width: 300px;
     }
 }
