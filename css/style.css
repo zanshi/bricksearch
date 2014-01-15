@@ -315,7 +315,7 @@ li>a {
 }
 
 .clear {
-   clear: both; height: 120px;
+   clear: both; height: 120px; /* height = footer + margin */
     
 }
 
