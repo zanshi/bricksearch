@@ -165,10 +165,10 @@ nav a:active {
     right: 40px;
 }
 
-.icons:hover {
-   background-color: white;
+.icons nav ul li:hover {
+    color:#FFFFFF;
+    background-color:#FFFFFF;
 }
-
 
 
 
