@@ -304,9 +304,9 @@ function printError($str)
 function mainSearchHtml($con, $row, $opt)
 {
     if ($opt == 1) {
-        $imgUrl = handleImgUrl($con, $row['PartID']);
+        $imgUrl = handleImgUrl($con, $row['PartID'], 1);
     } else {
-        $imgUrl = handleImgUrl($con, $row['SetID']);
+        $imgUrl = handleImgUrl($con, $row['SetID'], 0);
     }
     echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
@@ -332,16 +332,32 @@ function mainSearchHtml($con, $row, $opt)
  * @param  string $setID The Set ID
  * @return string
  */
-function handleImgUrl($con, $setID)
+function handleImgUrl($con, $info, $opt)
 {
 
-    // SQL query
-    $sql
-        = "SELECT images.*
-        FROM sets, images
-        WHERE sets.setID = images.itemID
-        AND images.itemID = '$setID'"
-    ;
+
+    if ($opt == 0) {
+        // SQL query
+        $sql
+            = "SELECT images.*
+            FROM sets, images
+            WHERE sets.setID = images.itemID
+            AND images.itemID = '$info'"
+        ;
+
+    } else if ($opt == 1) {
+        // SQL query
+        //
+        $partID = $info['partID'];
+        $colorName = $info['colorName'];
+        $sql
+            = "SELECT images.*
+            FROM images, colors
+            WHERE images.colorid = colors.colorid
+            AND images.itemID = '$partID'
+            AND colors.colorname = '$colorName'"
+        ;
+    }
 
     // Store the SQL query
     $result = mysqli_query($con, $sql);

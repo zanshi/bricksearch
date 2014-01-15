@@ -38,7 +38,7 @@ if ($con && $setID) {
         do {
 
             mysqli_next_result($con);
-            if ( $result = mysqli_store_result($con)) {
+            if ($result = mysqli_store_result($con)) {
 
                 // If result contains only one row it means
                 // it's from the first query
@@ -48,7 +48,7 @@ if ($con && $setID) {
 
                 // Otherwise, it's the second query
                 } else {
-                    writePartInfo($result);
+                    writePartInfo($result, $con);
                 }
                 // Free result when we are done
                 mysqli_free_result($result);
@@ -88,14 +88,16 @@ function writeSetInfo($row)
 
 }
 
-function writePartInfo($result)
+function writePartInfo($result, $con)
 {
     echo "<div class='partsContainer'>";
     echo "<div class='scroll'>";
     echo    "<h2> Parts </h2>";
     while ($row = mysqli_fetch_assoc($result)) {
 
+        $imgUrl = handleImgUrl($con, $row, 1);
         echo "<div class='parts'>";
+        echo    "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>";
         echo    "<h3>Part name</h3>";
         echo        "<p>" . $row['partName'] . "</p>";
         echo    "<h3>Part ID</h3>";
