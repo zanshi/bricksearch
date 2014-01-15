@@ -1,4 +1,4 @@
-
+		<div class="clear"></div>
         <footer>
             <p>© 2013 BrickSearch</p>
         </footer>

@@ -314,6 +314,11 @@ li>a {
     list-style: none;
 }
 
+.clear {
+   clear: both; height: 120px;
+    
+}
+
 
 footer {
     background-color: #00A4E1; 
