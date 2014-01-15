@@ -27,7 +27,7 @@
 
 }*/
 
-if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
+if (count($_GET) > 0 && $con = connect()) {
     if (isset($_GET["searchterm"])) {
         if (validate($_GET["searchterm"])) {
             $searchterm = cleanInput($_GET["searchterm"]);

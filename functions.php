@@ -167,7 +167,7 @@ function advSearch($con, $start, $opt, $year, $cname, $id, $name)
                 AND sets.Setname LIKE '%$name%'
                 ORDER BY Setname
                 LIMIT $start , 20";
-                $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
+                $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name . "&advOPT1=" . $opt;
     } 
     /*
     elseif ($opt == 'parts') {
@@ -264,6 +264,8 @@ function countResults($con, $opt, $year, $cname, $id, $name)
     $row = mysqli_fetch_assoc($result);
 
     $nrOfResults = $row['results'];
+
+    echo "<div class='row'><p style='text-align: center; margin: 10px;'>" . $nrOfResults . " results. </p></div>";
 
     return $nrOfResults;
 }
