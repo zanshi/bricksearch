@@ -236,7 +236,7 @@ main {
 .scroll { 
 		overflow-x: scroll;
 		overflow-y: hidden;
-		height: 280px;
+		height: 320px;
 		white-space:nowrap
 	} 
 
