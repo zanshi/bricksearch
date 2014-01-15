@@ -1,260 +1,822 @@
+
 *, *:before, *:after {
-    box-sizing         : border-box;
-    -webkit-box-sizing : border-box;
-    -moz-box-sizing    : border-box;
+
+    -moz-box-sizing: border-box;
+
+    box-sizing: border-box;
+
 }
-html, body {
-    background            : url(../img/cubes.png);
-    font-family           : 'Open Sans', sans-serif;
+
+html {
+
+    position: relative;
+
+    min-height: 100%;
+
 }
+
+body {
+
+    margin: 0 0 100px;
+
+    /* bottom = footer height */
+
+    background: url(../img/cubes.png);
+
+    font-family:'Open Sans', sans-serif;
+
+}
+
 h1 {
-    margin         : 5px;
 
-    font-family    : 'Press Start 2P', cursive;
-    font-size      : 2.5em;
-    font-weight    : normal;
-    color          : rgb(255, 255, 255);
-    line-height    : 2em;
-    text-align     : center;
-    text-transform : uppercase;
-    text-shadow    : 1px 1px 0 rgba(204, 204, 204, 1), 2px 2px 0 rgba(201, 201, 201, 1), 3px 3px 0 rgba(187, 187, 187, 1), 4px 4px 0 rgba(185, 185, 185, 1), 5px 5px 0 rgba(170, 170, 170, 1), 6px 6px 1px rgba(0, 0, 0, .1), 0px 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2), 5px 5px 10px rgba(0, 0, 0, .25), 10px 10px 10px rgba(0, 0, 0, .2), 15px 15px 15px rgba(0, 0, 0, .3);
+    margin: 5px;
 
-    /*
-    text-shadow                       : 1px 1px 0 rgba(255, 255, 255, 0.6), 
-    2px 2px 0 rgba(255, 255, 255, 0.6), 
-    5px 5px 0 rgba(0,0,0,0.2), 
-    6px 6px 0 rgba(0,0,0,0.2); 
-    */
+    font-family:'Press Start 2P', cursive;
+
+    font-size: 2.5em;
+
+    font-weight: normal;
+
+    color: rgb(255, 255, 255);
+
+    line-height: 2em;
+
+    text-align: center;
+
+    text-transform: uppercase;
+
+    text-shadow: 1px 1px 0 rgba(204, 204, 204, 1), 2px 2px 0 rgba(201, 201, 201, 1), 3px 3px 0 rgba(187, 187, 187, 1), 4px 4px 0 rgba(185, 185, 185, 1), 5px 5px 0 rgba(170, 170, 170, 1), 6px 6px 1px rgba(0, 0, 0, .1), 0px 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2), 5px 5px 10px rgba(0, 0, 0, .25), 10px 10px 10px rgba(0, 0, 0, .2), 15px 15px 15px rgba(0, 0, 0, .3);
+
 }
+
 h2 {
-    margin: 0px;
-    font-size   : 1em;
-    font-weight : bold;
-    color       : #0076a8;
+
+    margin: 0;
+
+    font-size: 1.7em;
+
+    font-weight: bold;
+
+    color: #0076a8;
+
+    text-align: center;
+
 }
 
-p{
+h3 {
+
     margin: 0;
+
+    font-size: 1em;
+
+    font-weight: bold;
+
+    color: #0076a8;
+
+}
+
+p {
+
+    margin: 0;
+
 }
 
 a {
-    color           : white;
-    text-decoration : none;
+
+    opacity: 1;
+
+    text-decoration: none;
+
+    transition: opacity 100ms;
+
+    color: black;
+
 }
+
 a:hover {
-    text-decoration : underline;
-}
-a.nav {
-    display       : inline-block;
 
-    padding       : 10px;
+    text-decoration: underline;
 
-    background    : white;
-    font-family   : 'Press Start 2P', cursive;
-    font-size     : 1em;
-    color         : rgb(24, 157, 219);
-    border-radius : 1px;
-    box-shadow    : 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(1, 0, 0, .2);
+}
 
-    /* border     : 1px solid rgba(5, 102, 145, 0.7); */
-    /* transition : all 0.25s; */
+a:focus {
+
+    opacity: 0.7;
+
+    outline: none;
+
 }
-a.nav:hover {
-    background      : white;
-    color           : rgb(24, 157, 219);
-    text-decoration : none;
-    box-shadow      : 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 4px 4px 0 #b9b9b9, 5px 5px 0 #aaa, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2), 5px 5px 10px rgba(0, 0, 0, .25), 10px 10px 10px rgba(0, 0, 0, .2), 15px 15px 15px rgba(0, 0, 0, .3);
-}
-a.nav:active {
-    background : white;
-    color      : rgb(24, 157, 219);
-    box-shadow : 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2);
-}
+
 li {
-    display         : inline;
-    margin-right    : 10px;
-    list-style-type : none;
+
+    display: inline;
+
+    margin-right: 10px;
+
+    list-style: none;
+
 }
+
 header {
-    position              : relative;
 
-    width                 : 100%;
-    margin                : 0 auto;
-    padding               : 20px 0;
+    position: relative;
 
-    background            : rgb(24, 157, 219);
-    background-attachment : fixed;
+    width: 100%;
+
+    margin: 0 auto;
+
+    padding: 20px 0;
+
+    background: rgb(24, 157, 219);
+
+    background-attachment: fixed;
 
     /* background         : url(../img/geometry.png); */
-    /* background         : rgba(25,155,224,0.7); */
-    }
-    
-    
 
+    /* background         : rgba(25,155,224,0.7); */
+
+}
+
+footer {
+
+    background-color: #1D1D1D;
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    height: 100px;
+
+    width: 100%;
+
+}
+
+footer p {
+
+    margin-top: 40px;
+
+    text-align: center;
+
+    color: #444444;
+
+    font-weight: 900;
+
+    font-size: x-large;
+
+}
 
 nav {
-    position      : relative;
+
+    position: relative;
+
     text-align: center;
-    width         : 100%;
-    margin        : 0 auto;
-    padding       : 7px 0 20px 0;
 
-    background    : rgb(10, 130, 190);
-    border-top    : 4px solid rgba(5, 102, 145, 0.8);
-    border-bottom : 4px solid rgba(5, 102, 145, 1);
+    width: 100%;
+
+    margin: 0 auto;
+
+    padding: 7px 0 20px 0;
+
+    background: rgb(10, 130, 190);
+
+    border-top: 4px solid rgba(5, 102, 145, 1);
+
+    border-bottom: 4px solid rgba(5, 102, 145, 1);
+
 }
+
 nav ul {
-    width   : 40%;
-    margin  : 0 auto;
-    padding : 15px 0 10px 0;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    padding: 15px 0 10px 0;
+
 }
+
+/* nav a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px;
+    background: white;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    color: rgb(24, 157, 219);
+    border-radius: 1px;
+    box-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(1, 0, 0, .2);
+    border     : 1px solid rgba(5, 102, 145, 0.7);
+    transition : all 0.25s;
+}
+
+nav a:hover {
+    background: white;
+    color: rgb(24, 157, 219);
+    text-decoration: none;
+    box-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 4px 4px 0 #b9b9b9, 5px 5px 0 #aaa, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2), 5px 5px 10px rgba(0, 0, 0, .25), 10px 10px 10px rgba(0, 0, 0, .2), 15px 15px 15px rgba(0, 0, 0, .3);
+}
+
+nav a:active {
+    background: white;
+    color: rgb(24, 157, 219);
+    box-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2);
+} */
+
+.button {
+
+    display: inline-block;
+
+    margin-top: 10px;
+
+    padding: 10px;
+
+    background: white;
+
+    font-family:'Press Start 2P', cursive;
+
+    font-size: 1em;
+
+    /* color: rgb(24, 157, 219); */
+
+    color: black;
+
+    border-radius: 1px;
+
+    box-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(1, 0, 0, .2);
+
+    border : none;
+
+    /* transition : all 0.25s; */
+
+}
+
+.button:hover {
+
+    background: white;
+
+    color: rgb(24, 157, 219);
+
+    text-decoration: none;
+
+    box-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 4px 4px 0 #b9b9b9, 5px 5px 0 #aaa, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2), 5px 5px 10px rgba(0, 0, 0, .25), 10px 10px 10px rgba(0, 0, 0, .2), 15px 15px 15px rgba(0, 0, 0, .3);
+
+}
+
+.button:active {
+
+    background: white;
+
+    color: rgb(24, 157, 219);
+
+    box-shadow: 1px 1px 0 #ccc, 2px 2px 0 #c9c9c9, 3px 3px 0 #bbb, 6px 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 1px 1px 3px rgba(0, 0, 0, .3), 3px 3px 5px rgba(0, 0, 0, .2);
+
+}
+
+.icons {
+
+    position:absolute;
+
+    top: 20px;
+
+    right: 40px;
+
+}
+
+.social-svg:hover {
+    
+    fill: #FFFFFF;
+    fill-opacity: 0.5;
+
+}
+
 #container {
-    min-height : 100%;
-    width      : 100%;
+
+    min-height: 100%;
+
+    width: 100%;
+
 }
+
 main {
-    margin : 20px auto;
+
+    margin: 20px auto 80px;
+
 }
+
+#resultStats {
+
+    text-align: center;
+
+    margin: 30px 0;
+
+}
+
+.advSearch {
+
+    text-align: center;
+
+}
+
+#advSearchForm {
+
+    text-align: left;
+
+    margin-bottom: 50px;
+
+}
+
 .advRow {
-    display : block;
-    width   : 315px;
-    margin  : 0px auto 8px auto;
+
+    display: block;
+
+    width: 315px;
+
+    margin: 0 auto 8px auto;
+
 }
+
 .advRow label {
-    float : left;
-    width : 100px;
+
+    float: left;
+
+    width: 100px;
+
 }
+
 .advRow input {
-    width : 200px;
+
+    width: 200px;
+
 }
+
+.advRow label input[type=radio], input.radio {
+
+    width : auto;
+
+}
+
 .row {
-    height        : 64px;
-    width         : 70%;
-    margin        : 20px auto;
 
-    background    : rgba(255, 255, 255, 0.8);
-    border        : 2px solid rgba(5, 144, 221, 0.8);
-    border-radius : 2px;
+    width: 70%;
 
-    transition    : all 300ms;
+    margin: 20px auto;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    border: 2px solid rgba(5, 144, 221, 0.8);
+
+    border-radius: 2px;
+
+    -webkit-transition: all 300ms;
+
+    transition: all 300ms;
+
 }
 
 .row:hover {
-    box-shadow : 0 0 5px rgba(5, 144, 221, 0.5);
+
+    box-shadow: 0 0 5px rgba(5, 144, 221, 0.5);
+
 }
+
 .row:active {
-    box-shadow : 0 0 5px rgba(5, 144, 221, 0.8);
+
+    box-shadow: 0 0 5px rgba(5, 144, 221, 0.8);
+
 }
 
 .thumb {
+
     float: left;
-    max-width: 80px;
-    max-height: 60px;
-    margin-right : 22px;
+
+    width: 80px;
+
+    min-height: 80px;
+
+    margin-right: 22px;
+
+}
+
+.thumb img {
+
+    min-width: 80px;
+
+    min-height: 60px;
+
 }
 
 .text {
-    margin-left : 30px;
-    padding-top: 17px;
+
+    padding: 18px 0;
+
+    cursor: pointer;
+
 }
+
+.scroll {
+
+    overflow-x: scroll;
+
+    overflow-y: hidden;
+
+    height: 380px;
+
+    white-space:nowrap;
+
+    border: 1px solid #1476a7;
+
+}
+
 .setname {
+
     display: inline;
-    
+
     font-size: 17px;
+
 }
+
+.setinfo {
+
+    text-align: left;
+
+}
+
 .setid {
+
     float: right;
 
-    margin-right: 70px;
+    margin-right: 30px;
+
 }
+
+.extendedResults {
+
+    overflow: hidden;
+
+    padding: 20px;
+
+    margin-top: 0;
+
+}
+
+.moreSetInfo {
+
+    float: left;
+
+    width: 15%;
+
+}
+
+.partsContainer {
+
+    float: left;
+
+    width: 85%;
+
+}
+
+.parts {
+
+    border: 1px solid rgba(5, 144, 221, 0.8);
+
+    margin: 10px;
+
+    padding: 15px;
+
+    display: inline-block;
+
+}
+
 .mainSearch {
-    position: relative;
-    height    : 44px;
-    max-width : 644px;
-    margin    : 0 auto;
+
+    position: static;
+
+    height: 44px;
+
+    width: 644px;
+
+    margin: 0 auto;
+
+}
+
+.noparts {
+
+    text-align: center;
+
+    margin-top: 20px;
+
 }
 
 .down {
+
     position: fixed;
-    top: 0;
+
+    top: 10px;
+
     left: 0;
+
     right: 0;
-    z-index:999;
+
+    z-index: 999;
+
 }
 
+#disqus_thread {
+
+    margin: 0 auto;
+
+    width: 600px;
+
+    border: none;
+
+    padding: 5px;
+
+}
 
 #searchButton {
-    float           : left;
 
-    height          : 44px;
-    width           : 44px;
-    margin          : 0 auto;
+    float: left;
 
-    background      : url("../img/search_vector.svg");
-    background-size : 40px 40px;
-    border          : 2px solid rgba(5, 144, 221, 0.8);
-    border-radius   : 0 2px 2px 0;
+    height: 44px;
 
-    transition      : box-shadow 0.25s;
+    width: 44px;
+
+    margin: 0 auto;
+
+    background: url("../img/search_vector.svg");
+
+    background-size: 40px 40px;
+
+    border: 2px solid rgba(5, 144, 221, 0.8);
+
+    border-radius: 0 2px 2px 0;
+
+    -webkit-transition: box-shadow 0.25s;
+
+    transition: box-shadow 0.25s;
+
 }
+
 #searchButton:hover {
-    box-shadow : 0 0 3px rgba(5, 144, 221, 0.5);
+
+    box-shadow: 0 0 3px rgba(5, 144, 221, 0.5);
+
 }
+
 #searchButton:active {
-    box-shadow : 0 0 4px rgba(5, 102, 145, 0.8) inset;
+
+    box-shadow: 0 0 4px rgba(5, 102, 145, 0.8) inset;
+
 }
+
+/* #searchButton2 {
+    position: relative;
+    top: 40px;
+    left: -155px;
+    height: 50px;
+    width: 117px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    padding: 10px;
+    background: white;
+} */
+
 #searchButton2 {
-    height     : 50px;
-    width      : 117px;
-    margin     : 0 auto;
 
-    background : url("search_vector.svg");
+    list-style: none outside none;
 
-    transition : box-shadow 0.25s;
+    text-align: center;
+
 }
+
 .searchField {
-    float         : left;
 
-    height        : 44px;
-    width         : 600px;
-    margin        : 0 auto;
-    padding       : 5px;
+    float: left;
 
-    border-color  : rgb(5, 144, 221);
-    border-color  : rgba(5, 144, 221, 0.8);
-    border-style  : solid;
-    border-width  : 2px 0 2px 2px;
-    border-radius : 2px 0 0 2px;
+    height: 44px;
 
-    transition    : box-shadow 0.25s;
+    width: -webkit-calc(100% - 44px);
+
+    width: calc(100% - 44px);
+
+    margin: 0 auto;
+
+    padding: 5px;
+
+    border-color: rgb(5, 144, 221);
+
+    border-color: rgba(5, 144, 221, 0.8);
+
+    border-style: solid;
+
+    border-width: 2px 0 2px 2px;
+
+    border-radius: 2px 0 0 2px;
+
+    -webkit-transition: box-shadow 0.25s;
+
+    transition: box-shadow 0.25s;
+
 }
+
 .searchField:hover {
-    box-shadow : 0 0 3px rgba(5, 144, 221, 0.5);
+
+    box-shadow: 0 0 3px rgba(5, 144, 221, 0.5);
+
 }
-footer {
-    position      : fixed;
-    bottom        : 0;
 
-    margin        : 0 0 30px 30px;
+#multiPage {
 
-    /* background : #ddd; */
+    margin: 30px auto;
+
+    text-align: center;
+
 }
-footer p {
-    display       : inline-block;
 
-    padding       : 7px;
+.clear {
 
-    background    : white;
-    font-size     : 0.9em;
-    color         : rgb(5, 144, 221);
-    border        : 1px solid rgb(5, 102, 145);
-    border        : 1px solid rgba(5, 102, 145, 0.55);
-    border-radius : 2px;
-    box-shadow    : 0 0 3px rgba(5, 144, 221, 0.5);
+    clear: both;
 
-    transition    : color 0.5s, background-color 0.5s;
+    height: 120px;
+
+    /* height = footer + margin */
+
 }
-footer p:hover {
-    background-color : rgb(5, 102, 145);
-    color            : white;
+
+@media (max-width: 800px) {
+
+    h1 {
+
+        font-size: 2.2em;
+
+    }
+
+    header {
+
+        padding: 10px 0;
+
+    }
+
+    nav ul {
+
+        margin-right: 5px;
+
+    }
+
+    .row {
+
+        width: -webkit-calc(100% - 20px);
+
+        width: calc(100% - 20px);
+
+        margin: 10px 10px;
+
+        border-width: 1px;
+
+    }
+
+    .thumb img {
+
+        border: 0 solid rgba(5, 144, 221, 0.8);
+
+        border-width: 0 1px 1px 0;
+
+    }
+
+    .setname {
+
+        display: block;
+
+    }
+
+    .setid {
+
+        float: none;
+
+        display: inline;
+
+    }
+
+    .mainSearch {
+
+        width: 100%;
+
+    }
+
+    #disqus_thread {
+
+        width: 500px;
+
+    }
+
+    footer {
+
+        background-color: #1D1D1D;
+
+        position: absolute;
+
+        left: 0;
+
+        bottom: 0;
+
+        height: 100px;
+
+        width: 100%;
+
+    }
+
+    footer p {
+
+        margin-top: 5px;
+
+        text-align: center;
+
+        color: #444444;
+
+        font-weight: 900;
+
+        font-size: x-small;
+
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    body {
+
+        font-size: 80%;
+
+    }
+
+    #disqus_thread {
+
+        width: 300px;
+
+    }
+
+    footer {
+
+        background-color: #1D1D1D;
+
+        position: absolute;
+
+        left: 0;
+
+        bottom: 0;
+
+        height: 100px;
+
+        width: 100%;
+
+    }
+
+    footer p {
+
+        margin-top: 5px;
+
+        text-align: center;
+
+        color: #444444;
+
+        font-weight: 900;
+
+        font-size: x-small;
+
+    }
+
+    .clear {
+
+        clear: both;
+
+        height: 120px;
+
+        /* height = footer + margin */
+
+    }
+
+    body {
+
+        margin: 0 0 100px;
+
+        /* bottom = footer height */
+
+        background: url(../img/cubes.png);
+
+        font-family:'Open Sans', sans-serif;
+
+    }
+
+    .icons {
+
+        margin-left:auto;
+
+        margin-right:auto;
+
+        width:75%;
+
+    }
+
 }
