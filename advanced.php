@@ -49,8 +49,8 @@
 -->
                 <div class="advRow">
                     <label>Select</label>
-                    <label for="part"><input type="radio" name="advOPT1" value="1" id="part" checked>Part</label>
-                    <label for="set"><input type="radio" name="advOPT1" value="0" id="set">Set</label>
+                    <label for="part"><input type="radio" name="advOPT1" value="1" id="part">Part</label>
+                    <label for="set"><input type="radio" name="advOPT1" value="0" id="set" checked>Set</label>
                 </div>
 
                 <input type="submit" id="searchButton2" value="Search">
@@ -63,17 +63,27 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
 
+    $searchOPT = 0;
     $cid = "";
     $cname = "";
     $id = "";
     $name = "";
 
+    if (isset($_GET["advOPT1"])) {
     $searchOPT = $_GET['advOPT1'];
+    }
+    if (isset($_GET["cid"])) {
     $cid = cleanInput($_GET["cid"]);
+    }
+    if (isset($_GET["cname"])) {
     $cname = cleanInput($_GET["cname"]);
+    }
+    if (isset($_GET["id"])) {
     $id = cleanInput($_GET["id"]);
+    }
+    if (isset($_GET["name"])) {
     $name = cleanInput($_GET["name"]);
-
+    }
     if ($searchOPT != null || $cid != null || $cname != null || $id != null || $name != null) {
         if (isset($_GET["start"])) {
             $start = cleanInput($_GET["start"]);
