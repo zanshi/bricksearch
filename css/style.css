@@ -316,7 +316,6 @@ li>a {
 
 
 footer {
-    padding-top: 100px;
     background-color: #00A4E1; 
     position: absolute;
     left: 0;
@@ -326,7 +325,7 @@ footer {
 }
 
 footer p {
-    padding-top: 40px;
+    margin-top: 40px;
     text-align: center;
     color: #0076a8;
     font-weight: 900;
