@@ -57,6 +57,6 @@ if (isset($_GET["searchterm"])) {
             <ul>
                 <li><a href="index.php" class="button">Home</a></li>
                 <li><a href="advanced.php" class="button">Advanced search</a></li>
-                <li><a href="about.php" class="button">About</a></li>
+                <li><a href="comment.php" class="button">Comment</a></li>
             </ul>
         </nav>
