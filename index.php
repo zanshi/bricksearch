@@ -36,11 +36,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
                 $start = $_GET["start"];
                 if (validateStart($start)) {
                     //mainSearch($con, $searchterm, $start);
-                    advSearch($con, $start, 2, "", "", "", $searchterm);
+                    advSearch($con, $start, 'main', "", "", "", $searchterm);
                 }
             } else {
                 //mainSearch($con, $searchterm, 0);
-                advSearch($con, 0, 2, "", "", "", $searchterm);
+                advSearch($con, 0, 'main', "", "", "", $searchterm);
             }
         }
 
