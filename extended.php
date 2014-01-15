@@ -18,52 +18,71 @@ $con = connect();
 
 if ($con && $setID) {
 
-    $query
+    $query1
         = "SELECT sets.year, categories.categoryName
         FROM sets, categories
         WHERE sets.catID = categories.catID
-        AND sets.setID = '$setID';"
+        AND sets.setID = '$setID'"
     ;
 
-    $query
-        .= "SELECT parts.partName, parts.partID, inventory.quantity, colors.colorName
-            FROM sets, parts, inventory, colors
-            WHERE sets.setID = inventory.setID
-            AND inventory.colorID = colors.colorID
+    $query2
+        = "SELECT parts.partName, parts.partID, inventory.quantity, colors.colorName
+            FROM parts, inventory, colors
+            WHERE inventory.colorID = colors.colorID
             AND inventory.itemID = parts.partID
-            AND sets.setID = '$setID'"
+            AND inventory.setID = '$setID'"
     ;
 
-    if (mysqli_multi_query($con, $query)) {
-        do {
+    $result = mysqli_query($con, $query1);
 
-            mysqli_next_result($con);
-            if ($result = mysqli_store_result($con)) {
+    if ($result) {
+        $row = mysqli_fetch_assoc($result);
 
-                // If result contains only one row it means
-                // it's from the first query
-                if (mysqli_num_rows($result) == 1) {
-                    $row = mysqli_fetch_assoc($result);
-                    writeSetInfo($row);
-
-                // Otherwise, it's the second query
-                } else {
-                    writePartInfo($result, $con);
-                }
-                // Free result when we are done
-                mysqli_free_result($result);
-
-            }
-            // If no parts in set, close div tag
-            if (mysqli_more_results($con)) {
-
-            } else {
-                echo "</div>";
-            }
-        } while (mysqli_more_results($con));
+        writeSetInfo($row);
     }
 
+    mysqli_free_result($result);
+
+    $result = mysqli_query($con, $query2);
+
+    if ($result) {
+        writePartInfo($result, $con);
+    }
+
+    mysqli_free_result($result);
+
     mysqli_close($con);
+
+    /*    if (mysqli_multi_query($con, $query)) {
+            do {
+                mysqli_next_result($con);
+                if ($result = mysqli_store_result($con)) {
+
+                    // If result contains only one row it means
+                    // it's from the first query
+                    if (mysqli_num_rows($result) == 1) {
+                        $row = mysqli_fetch_assoc($result);
+                        writeSetInfo($row);
+
+                    // Otherwise, it's the second query
+                    } else {
+                        writePartInfo($result, $con);
+                    }
+                    // Free result when we are done
+                    mysqli_free_result($result);
+
+                }
+                // If no parts in set, close div tag
+                if (mysqli_more_results($con)) {
+
+                } else {
+                    echo "<h2> No parts in this set!</h2>";
+                    
+                }
+            } while (mysqli_more_results($con));
+
+            echo "</div>";
+        }*/
 
 }
 
@@ -91,24 +110,32 @@ function writeSetInfo($row)
 function writePartInfo($result, $con)
 {
     echo "<div class='partsContainer'>";
-    echo    "<h2> Parts </h2>";
+    echo "<h2> Parts </h2>";
     echo "<div class='scroll'>";
-    while ($row = mysqli_fetch_assoc($result)) {
 
-        $imgUrl = handleImgUrl($con, $row, 1);
-        echo "<div class='parts'>";
-        echo    "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>";
-        echo    "<h3>Part name</h3>";
-        echo        "<p>" . $row['partName'] . "</p>";
-        echo    "<h3>Part ID</h3>";
-        echo        "<p>" . $row['partID'] . "</p>";
-        echo    "<h3>Quantity</h3>";
-        echo        "<p>" . $row['quantity'] . "</p>";
-        echo    "<h3>Color</h3>";
-        echo        "<p>" . $row['colorName'] . "</p>";
-        echo "</div>";
-    }
+    $row = mysqli_fetch_assoc($result);
+    do {
+        if ($row['partName'] != null) {
+            $imgUrl = handleImgUrl($con, $row, 1);
+            echo "<div class='parts'>";
+            echo    "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>";
+            echo    "<h3>Part name</h3>";
+            echo        "<p>" . $row['partName'] . "</p>";
+            echo    "<h3>Part ID</h3>";
+            echo        "<p>" . $row['partID'] . "</p>";
+            echo    "<h3>Quantity</h3>";
+            echo        "<p>" . $row['quantity'] . "</p>";
+            echo    "<h3>Color</h3>";
+            echo        "<p>" . $row['colorName'] . "</p>";
+            echo "</div>";
+        } else {
+            echo "<h3>No parts in this set. </h3>";
+        }
+    } while ($row = mysqli_fetch_assoc($result));
     echo "</div>";
     echo "</div>";
+    echo "</div>";
+
+
 
 }
