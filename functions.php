@@ -18,7 +18,7 @@ function connect()
     }
 
     // Check if a connection can be made, if not, print error and return null
-    if (!(mysqli_real_connect($con, "koneko.se", "projekt", "tnmk30", "lego"))) {
+    if (!(mysqli_real_connect($con, "localhost", "root", "11Mars", "lego"))) {
         printError("Couldn't connect to database.");
 
         return null;
@@ -145,7 +145,7 @@ function mainSearch($con, $str, $start)
 function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
 {
 
-    if ($opt == 2) {
+    if ($opt == 'main') {
         $str = mysqli_real_escape_string($con, $name);
         $sql
             = "SELECT sets.SetID, sets.Setname
@@ -155,7 +155,7 @@ function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
             LIMIT $start , 20";
 
             $searchUrl = "index.php?searchterm=" . $name;
-    } elseif ($opt == 0) {
+    } elseif ($opt == 'sets') {
         $sql
             = "SELECT sets.SetID, sets.Setname
                 FROM sets, categories
@@ -166,7 +166,7 @@ function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
                 AND sets.Setname LIKE '%$name%'
                 LIMIT $start , 20";
                 $searchUrl = "advanced.php?cid=" . $cid . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
-    } elseif ($opt == 1) {
+    } elseif ($opt == 'parts') {
         $sql
             = "SELECT parts.PartID, parts.Partname
                 FROM parts, inventory, colors
@@ -223,7 +223,7 @@ function countResults($con, $opt, $cid, $cname, $id, $name)
         OR Setname LIKE '%$str%'"
     ;
 */
-    if ($opt == 2) {
+    if ($opt == 'main') {
         $sql
             = "SELECT COUNT(*) AS results
             FROM sets
@@ -231,7 +231,7 @@ function countResults($con, $opt, $cid, $cname, $id, $name)
             OR Setname LIKE '%$name%'
             ";
 
-    } elseif ($opt == 0) {
+    } elseif ($opt == 'sets') {
         $sql
             = "SELECT COUNT(*) AS results
                 FROM sets, categories
@@ -241,7 +241,7 @@ function countResults($con, $opt, $cid, $cname, $id, $name)
                 AND sets.SetID LIKE '%$id%'
                 AND sets.Setname LIKE '%$name%'
                 ";
-    } elseif ($opt == 1) {
+    } elseif ($opt == 'parts') {
         $sql
             = "SELECT COUNT(*) AS results
                 FROM parts, inventory, colors
@@ -272,7 +272,7 @@ function noResult($name, $opt)
 {
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
-    if ($opt == 2) {
+    if ($opt == 'main') {
         echo "Your search for <strong>" . $name . "</strong> gave no results. Please try again." . "\n";
     } else {
         echo "Your search gave no results. Please try again." . "\n";
@@ -303,7 +303,7 @@ function printError($str)
  */
 function mainSearchHtml($con, $row, $opt)
 {
-    if ($opt == 1) {
+    if ($opt == 'parts') {
         $imgUrl = handleImgUrl($con, $row['PartID']);
     } else {
         $imgUrl = handleImgUrl($con, $row['SetID']);
@@ -313,7 +313,7 @@ function mainSearchHtml($con, $row, $opt)
     echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
-    if ($opt == 1) {
+    if ($opt == 'parts') {
         echo        "<h3 class='setname'>" . $row['Partname'] . "</h3> \n";
         echo         "<p class='setid'>" . $row['PartID'] . "</p> \n";
     } else {
