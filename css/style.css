@@ -37,13 +37,7 @@ h2 {
     text-align: center;
 }
 
-h2left {
-    margin: 0;
-    font-size: 1.7em;
-    font-weight: bold;
-    color: #0076a8;
-    text-align: left;
-}
+
 
 h3 {
     margin: 0;
@@ -241,6 +235,10 @@ main {
 .setname {
     display: inline;
     font-size: 17px;
+}
+
+.setinfo {
+    text-align: left;
 }
 
 .setid {
