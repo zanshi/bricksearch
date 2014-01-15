@@ -157,14 +157,11 @@ nav a:active {
     position:absolute;
     top: 20px;
     right: 40px;
-    opacity: .5;
-    background-color:  #444444;
 }
 
 .icons ul li :hover {
     color:rgb(255,255,255);
     background-color:rgb(255,255,255);
-    opacity: 1;
 }
 
 
