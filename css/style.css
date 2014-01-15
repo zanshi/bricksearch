@@ -87,7 +87,7 @@ header {
 }
 
 footer {
-    background-color: #1E1E1E; 
+    background-color: #0F0F0F; 
     position: absolute;
     left: 0;
     bottom: 0;
@@ -159,7 +159,7 @@ nav a:active {
     right: 40px;
 }
 
-.icons ul li :hover {
+.icons li :hover {
     color:rgb(255,255,255);
     background-color:rgb(255,255,255);
 }
