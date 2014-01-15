@@ -157,8 +157,6 @@ nav a:active {
     position:absolute;
     top: 20px;
     right: 40px;
-    fill: none;
-    pointer-events: all;
 }
 
 .icons li a svg:hover {
