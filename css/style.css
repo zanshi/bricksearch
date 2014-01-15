@@ -159,9 +159,7 @@ nav a:active {
     right: 40px;
 }
 
-.icons li :hover {
-    color:rgb(255,255,255);
-    background-color:rgb(255,255,255);
+.icons  svg:hover{
     fill: #94d31b;
 }
 
