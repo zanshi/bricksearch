@@ -41,24 +41,25 @@
 
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                 	<div class="advRow">
-	                	<label>SetID</label>
-                        <input type="text" name="setid" >
+	                	<label>Cid</label>
+                        <input type="text" name="cid" >
                     </div>
                     <div class="advRow">
-                        <label>SetName</label>
-                        <input type="text" name="setname">
+                        <label>Cname</label>
+                        <input type="text" name="cname">
                     </div>
                     <div class="advRow">
-	                	<label>Year</label>
-	                    <input type="text" name="year">
+	                	<label>ID</label>
+	                    <input type="text" name="id">
                     </div>
                     <div class="advRow">
-	                	<label>Category</label>
-	                    <input type="text" name="catname">
+	                	<label>Name</label>
+	                    <input type="text" name="name">
                     </div>
+<!--
                     <div class="advRow">
 	                	<label>Item ID</label>
-	                    <input type="text" name="itemid">
+	                    <input type="text" name="quantity">
                     </div>
                     <div class="advRow">
 	                	<label>Quantity</label>
@@ -66,20 +67,21 @@
                     </div>
                     <div class="advRow">
 	                	<label>Partname</label>
-	                    <input type="text" name="partname">
+	                    <input type="text" name="quantity">
                     </div>
                     <div class="advRow">
 	                	<label>Itemtype</label>
-	                    <input type="text" name="itemtype">
+	                    <input type="text" name="quantity">
                     </div>
                     <div class="advRow">
 	                	<label>Color</label>
-	                    <input type="text" name="colorname">
+	                    <input type="text" name="quantity">
                     </div>
                     <div class="advRow">
 	                	<label>Minifig</label>
 	                    <input type="text" name="minifig">
                     </div>
+-->
                     <div class="advRow"> 
                         <label>Select</label> 
                         <label for="part"><input type="radio" name="advOPT1" value="1" id="part" checked>Part</label> 
@@ -93,43 +95,23 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $searchOPT = $_POST['advOPT1'];
+    $cid = "";
+    $cname = "";
+    $id = "";
+    $name = "";
 
-    if (!empty($_POST["setid"])) {
-        $searchterms['setid'] = validate($_POST["setid"]);        
-    }
-    if (!empty($_POST["setname"])) {
-        $searchterms['setname'] = validate($_POST["setname"]);        
-    }
-    if (!empty($_POST["year"])) {
-        $searchterms['year'] = validate($_POST["year"]);        
-    }
-    if (!empty($_POST["catname"])) {
-        $searchterms['catname'] = validate($_POST["catname"]);        
-    }
-    if (!empty($_POST["itemid"])) {
-        $searchterms['itemid'] = validate($_POST["itemid"]);        
-    }
-    if (!empty($_POST["quantity"])) {
-        $searchterms['quantity'] = validate($_POST["quantity"]);        
-    }
-    if (!empty($_POST["partname"])) {
-        $searchterms['partname'] = validate($_POST["partname"]);        
-    }
-    if (!empty($_POST["itemtype"])) {
-        $searchterms['itemtype'] = validate($_POST["itemtype"]);        
-    }
-    if (!empty($_POST["colorname"])) {
-        $searchterms['colorname'] = validate($_POST["colorname"]);        
-    }
-    if (!empty($_POST["minifig"])) {
-        $searchterms['minifig'] = validate($_POST["minifig"]);        
-    }
+    $searchOPT = $_POST['advOPT1'];
+    $cid = validate($_POST["cid"]); 
+    $cname = validate($_POST["cname"]);
+    $id = validate($_POST["id"]); 
+    $name = validate($_POST["name"]);   
+        
+
     if(!empty($_POST["start"])) {
         $start = validate($_POST["start"]);
-//        advSearch(connect(), $searchterms, $start, $searchOPT);
+        advSearch(connect(), $start, $searchOPT, $cid, $cname, $id, $name);
     } else {
-//        advSearch(connect(), $searchterms, 0, $searchOPT);
+        advSearch(connect(), 0, $searchOPT, $cid, $cname, $id, $name);
     }
 }
 ?>

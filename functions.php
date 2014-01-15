@@ -6,7 +6,7 @@
  */
 function connect()
 {
-    $con = mysqli_connect("koneko.se", "projekt", "tnmk30", "lego");
+    $con = mysqli_connect("", "", "", "lego");
     if (!$con) {
         die('Could not connect: ' . mysqli_connect_error());
     }
@@ -107,27 +107,51 @@ function mainSearch($con, $str, $start)
     }
 
 }
-function advSearch($con, $str, $start, $opt)
-{
 
-    if($opt){
+function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
+{
+    
+    if($opt == 2){
         $sql
-            = "";
-    } else{
+            = "SELECT sets.SetID, sets.Setname
+            FROM sets
+            WHERE SetID LIKE '%$name%'
+            OR Setname LIKE '%$name%'
+            LIMIT $start , 20";
+
+    } else if($opt == 0){
         $sql 
-            = "";
+            = "SELECT sets.SetID, sets.Setname
+                FROM sets, categories
+                WHERE sets.catID = categories.catid
+                AND sets.catID LIKE '%$cid%'
+                AND categories.categoryname LIKE '%$cname%'
+                AND sets.SetID LIKE '%$id%'
+                AND sets.Setname LIKE '%$name%'
+                LIMIT 0 , 20";
+    } else if($opt == 1){
+        $sql
+            = "SELECT parts.PartID, parts.Partname
+                FROM parts, inventory, colors
+                WHERE inventory.ItemID = parts.PartID
+                AND inventory.ColorID = colors.ColorID
+                AND inventory.ColorID LIKE '%$cid%'
+                AND colors.Colorname LIKE '%$cname%'
+                AND parts.PartID LIKE '%$id%'
+                AND parts.Partname LIKE '%$name%'
+                LIMIT 0 , 20";
     }
 
     $result = mysqli_query($con, $sql);
 
-    $nrOfResults = countResults($con, $str);
+    $nrOfResults = countResults($con, $opt, $cid, $cname, $id, $name);
 
     if ($nrOfResults != 0) {
 
-        echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
+        //echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
         while($row = mysqli_fetch_assoc($result)) {
-            mainSearchHtml($con, $row);
+            mainSearchHtml($con, $row, $opt);
         }
 
         if($nrOfResults > 20) {
@@ -137,7 +161,7 @@ function advSearch($con, $str, $start, $opt)
         mysqli_free_result($result);
 
     } else {
-        noResult($str);
+        noResult($name, $opt);
     }
 
 }
@@ -150,14 +174,46 @@ function advSearch($con, $str, $start, $opt)
  * @param  string $str Search string
  * @return int $nrOfResults
  */
-function countResults($con, $str) {
+
+function countResults($con, $opt, $cid, $cname, $id, $name) {
+ /*
     $sql
         = "SELECT COUNT(*) AS results
         FROM sets
         WHERE SetID LIKE '%$str%'
         OR Setname LIKE '%$str%'"
     ;
+*/
+    if($opt == 2){
+        $sql
+            = "SELECT COUNT(*) AS results
+            FROM sets
+            WHERE SetID LIKE '%$name%'
+            OR Setname LIKE '%$name%'
+            ";
 
+    } else if($opt == 0){
+        $sql 
+            = "SELECT COUNT(*) AS results
+                FROM sets, categories
+                WHERE sets.catID = categories.catid
+                AND sets.catID LIKE '%$cid%'
+                AND categories.categoryname LIKE '%$cname%'
+                AND sets.SetID LIKE '%$id%'
+                AND sets.Setname LIKE '%$name%'
+                ";
+    } else if($opt == 1){
+        $sql
+            = "SELECT COUNT(*) AS results
+                FROM parts, inventory, colors
+                WHERE inventory.ItemID = parts.PartID
+                AND inventory.ColorID = colors.ColorID
+                AND inventory.ColorID LIKE '%$cid%'
+                AND colors.Colorname LIKE '%$cname%'
+                AND parts.PartID LIKE '%$id%'
+                AND parts.Partname LIKE '%$name%'
+                ";
+    }
     $result = mysqli_query($con, $sql);
 
     $row = mysqli_fetch_assoc($result);
@@ -167,17 +223,20 @@ function countResults($con, $str) {
     return $nrOfResults;
 }
 
-
 /**
  * Writes out an error message to the user if no results were found
  * when searching.
  * @param  string $str search string
  * @return void
  */
-function noResult($str) {
+function noResult($name, $opt) {
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
-    echo        "Your search for <strong>" . $str . "</strong> gave no results. Please try again." . "\n";
+    if($opt == 2){
+    echo        "Your search for <strong>" . $name . "</strong> gave no results. Please try again." . "\n";
+    }else{
+    echo        "Your search gave no results. Please try again." . "\n";
+    }
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
 }
@@ -194,18 +253,26 @@ function noResult($str) {
  * @param  Associative array $row
  * @return void
  */
-function mainSearchHtml($con, $row)
+function mainSearchHtml($con, $row, $opt)
 {
-
+    if($opt == 1){
+        $imgUrl = handleImgUrl($con, $row['PartID']);
+    }else{
     $imgUrl = handleImgUrl($con, $row['SetID']);
-
+    }
     echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
     echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
+    if($opt == 1){
+    echo        "<h3 class='setname'>" . $row['Partname'] . "</h3> \n";
+    echo         "<p class='setid'>" . $row['PartID'] . "</p> \n";
+    } else{ 
     echo        "<h3 class='setname'>" . $row['Setname'] . "</h3> \n";
     echo         "<p class='setid'>" . $row['SetID'] . "</p> \n";
+
+    }
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
 

@@ -90,9 +90,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         if(!empty($_GET["start"])) {
             $start = validate($_GET["start"]);
-            mainSearch(connect(), $searchterm, $start);
+            advSearch(connect(), $start, 2, "", "", "", $searchterm);
         } else {
-            mainSearch(connect(), $searchterm, 0);
+            advSearch(connect(), 0, 2, "", "", "", $searchterm);
         }
     }
     
