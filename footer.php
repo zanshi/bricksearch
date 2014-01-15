@@ -11,14 +11,14 @@
 				c14.226,12.039,29.182,17.874,58.37,17.874c28.813,0,43.044-6.198,56.538-17.874C390.783,293.508,398.08,269.793,398.08,230.034"/>
 				<rect class="social-svg" x="146.744" y="154.884" fill="#444444" width="41.22" height="168.898"/>
 				<polygon class="social-svg" fill="#444444" points="124.491,323.783 124.491,286.942 45.696,286.942 45.696,83.021 1.92,83.021 1.92,323.783 "/>
-				<path class="social-svg" fill="#FF7D00" d="M144.693,104.847c0-12.615,10.221-22.848,22.826-22.848c12.608,0,22.829,10.234,22.829,22.848
+				<path class="social-svg" fill="#444444" d="M144.693,104.847c0-12.615,10.221-22.848,22.826-22.848c12.608,0,22.829,10.234,22.829,22.848
 				c0,12.595-10.221,22.816-22.829,22.816C154.915,127.663,144.693,117.442,144.693,104.847L144.693,104.847z"/>
 				</svg></a></li>
 
 				<li><a href="http://www.medieteknik.nu"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				width="40px" height="40px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
 				<rect class="social-svg" x="3" y="103" fill="#444444" width="187" height="187"/>
-				<rect class="social-svg" x="210" y="103" fill="#444444" width="187" height="187"/>
+				<rect class="social-svg" x="210" y="103" fill="#FF7D00" width="187" height="187"/>
 				</svg>
 				</svg>
 				</a></li>
