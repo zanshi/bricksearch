@@ -94,6 +94,7 @@ function mainSearch($con, $str, $start)
         LIMIT $start , 20"
     ;*/
 
+    $str = mysqli_real_escape_string($con, $str);
 
     $sql
         = "SELECT sets.SetID, sets.Setname
@@ -130,6 +131,15 @@ function mainSearch($con, $str, $start)
     }
 
 }
+
+function constructQuery($optArray)
+{
+    //foreach($optArray)
+
+    return $sqlString;
+}
+
+
 function advSearch($con, $str, $start, $opt)
 {
 
@@ -174,6 +184,7 @@ function advSearch($con, $str, $start, $opt)
  */
 function countResults($con, $str)
 {
+    
     $sql
         = "SELECT COUNT(*) AS results
         FROM sets
@@ -188,6 +199,7 @@ function countResults($con, $str)
     $nrOfResults = $row['results'];
 
     return $nrOfResults;
+
 }
 
 /**
@@ -333,12 +345,15 @@ function multiPage($str, $nrOfResults, $start)
     echo "<li> <a href='index.php?searchterm=" . $str . "'><strong>First result </strong></a> </li>";
 
     // Print the proper pages
-    for (; $i <= $endPage; $i++) {
+    
+    if ($currentPage <= $totalPages) {
+        for (; $i <= $endPage; $i++) {
 
-        if ($i == $currentPage) {
-            echo "<li> <strong> " . ($i+1) . " </strong> </li>";
-        } else {
-            echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
+            if ($i == $currentPage) {
+                echo "<li> <strong> " . ($i+1) . " </strong> </li>";
+            } else {
+                echo "<li> <a href='index.php?searchterm=" . $str . "&start=" . $i*20 . "'>" . ($i+1) . "</a> </li>";
+            }
         }
     }
 

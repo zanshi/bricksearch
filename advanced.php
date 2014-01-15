@@ -2,9 +2,9 @@
 
         <main>
 
-         <div id="mainSearch">
+         <div class="mainSearch">
 
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
                     <div class="advRow">
                         <label>SetID</label>
                         <input type="text" name="setid" >
@@ -55,42 +55,42 @@
                 </form>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
-    $searchOPT = $_POST['advOPT1'];
-
-    if (!empty($_POST["setid"])) {
-        $searchterms['setid'] = validate($_POST["setid"]);
+/*    if(isset($searchOPT = $_POST['advOPT1'];
+*/
+    if (!empty($_GET["setid"])) {
+        $searchterms['setid'] = cleanInput($_GET["setid"]);
     }
-    if (!empty($_POST["setname"])) {
-        $searchterms['setname'] = validate($_POST["setname"]);
+    if (!empty($_GET["setname"])) {
+        $searchterms['setname'] = cleanInput($_GET["setname"]);
     }
-    if (!empty($_POST["year"])) {
-        $searchterms['year'] = validate($_POST["year"]);
+    if (!empty($_GET["year"])) {
+        $searchterms['year'] = cleanInput($_GET["year"]);
     }
-    if (!empty($_POST["catname"])) {
-        $searchterms['catname'] = validate($_POST["catname"]);
+    if (!empty($_GET["catname"])) {
+        $searchterms['catname'] = cleanInput($_GET["catname"]);
     }
-    if (!empty($_POST["itemid"])) {
-        $searchterms['itemid'] = validate($_POST["itemid"]);
+    if (!empty($_GET["itemid"])) {
+        $searchterms['itemid'] = cleanInput($_GET["itemid"]);
     }
-    if (!empty($_POST["quantity"])) {
-        $searchterms['quantity'] = validate($_POST["quantity"]);
+    if (!empty($_GET["quantity"])) {
+        $searchterms['quantity'] = cleanInput($_GET["quantity"]);
     }
-    if (!empty($_POST["partname"])) {
-        $searchterms['partname'] = validate($_POST["partname"]);
+    if (!empty($_GET["partname"])) {
+        $searchterms['partname'] = cleanInput($_GET["partname"]);
     }
-    if (!empty($_POST["itemtype"])) {
-        $searchterms['itemtype'] = validate($_POST["itemtype"]);
+    if (!empty($_GET["itemtype"])) {
+        $searchterms['itemtype'] = cleanInput($_GET["itemtype"]);
     }
-    if (!empty($_POST["colorname"])) {
-        $searchterms['colorname'] = validate($_POST["colorname"]);
+    if (!empty($_GET["colorname"])) {
+        $searchterms['colorname'] = cleanInput($_GET["colorname"]);
     }
-    if (!empty($_POST["minifig"])) {
-        $searchterms['minifig'] = validate($_POST["minifig"]);
+    if (!empty($_GET["minifig"])) {
+        $searchterms['minifig'] = cleanInput($_GET["minifig"]);
     }
-    if (!empty($_POST["start"])) {
-        $start = validate($_POST["start"]);
+    if (!empty($_GET["start"])) {
+        $start = cleanInput($_GET["start"]);
 //        advSearch(connect(), $searchterms, $start, $searchOPT);
     } else {
 //        advSearch(connect(), $searchterms, 0, $searchOPT);

@@ -26,21 +26,22 @@
     }
 
 }*/
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (isset($_GET["searchterm"])) {
+        if (validate($_GET["searchterm"])) {
+            $searchterm = cleanInput($_GET["searchterm"]);
 
-if (isset($_GET["searchterm"])) {
-    if (validate($_GET["searchterm"])) {
-        $searchterm = cleanInput($_GET["searchterm"]);
-
-        if (isset($_GET["start"])) {
-            $start = $_GET["start"];
-            if (validateStart($start)) {
-                mainSearch(connect(), $searchterm, $start);
+            if (isset($_GET["start"])) {
+                $start = $_GET["start"];
+                if (validateStart($start)) {
+                    mainSearch(connect(), $searchterm, $start);
+                }
+            } else {
+                mainSearch(connect(), $searchterm, 0);
             }
-        } else {
-            mainSearch(connect(), $searchterm, 0);
         }
-    }
 
+    }
 }
 
 ?>
