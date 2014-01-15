@@ -154,8 +154,7 @@ function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
                 AND sets.SetID LIKE '%$id%'
                 AND sets.Setname LIKE '%$name%'
                 LIMIT $start , 20";
-
-                $searchUrl = "advanced.php?";
+                $searchUrl = "advanced.php?cid=" . $cid . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
     } elseif ($opt == 1) {
         $sql
             = "SELECT parts.PartID, parts.Partname
@@ -167,9 +166,7 @@ function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
                 AND parts.PartID LIKE '%$id%'
                 AND parts.Partname LIKE '%$name%'
                 LIMIT $start , 20";
-
-                $searchUrl = "advanced.php?";
-
+                $searchUrl = "advanced.php?cid=" . $cid . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
     }
 
     $result = mysqli_query($con, $sql);
