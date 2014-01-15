@@ -441,11 +441,12 @@ body {
 }
 
 .icons{
-    top: 25px;
-    margin-left: 0px;
-}
+
+    position:absolute;
+    top: 20px;
 
 }
+
 
 @media (max-width: 650px) {
     body {
