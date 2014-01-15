@@ -49,7 +49,7 @@
 -->
                 <div class="advRow">
                     <label>Select</label>
-                    <label for="part"><input type="radio" name="advOPT1" value="1" id="part">Part</label>
+                    <label for="part"><input type="radio" name="advOPT1" value="1" id="part" disabled>Part</label>
                     <label for="set"><input type="radio" name="advOPT1" value="0" id="set" checked>Set</label>
                 </div>
 
