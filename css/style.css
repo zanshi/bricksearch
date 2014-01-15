@@ -420,11 +420,11 @@ footer {
 }
 
 footer p {
-    margin-top: 2px;
+    margin-top: 5px;
     text-align: center;
     color: #444444;
     font-weight: 900;
-    font-size: small;
+    font-size: x-small;
 }
 
 .clear {
@@ -439,8 +439,6 @@ body {
 }
 
 .icons{
-
-    position:absolute;
     top: 20px;
     margin: 0 auto;
 }
@@ -455,40 +453,7 @@ body {
         width: 300px;
     }
 
-footer {
-    background-color: #1D1D1D; 
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-}
 
-footer p {
-    margin-top: 2px;
-    text-align: center;
-    color: #444444;
-    font-weight: 900;
-    font-size: small;
-}
-
-.clear {
-   clear: both; height: 120px; /* height = footer + margin */
-    
-}
-
-body {
-    margin: 0 0 100px; /* bottom = footer height */
-    background: url(../img/cubes.png);
-    font-family: 'Open Sans', sans-serif;
-}
-
-.icons{
-
-    position:absolute;
-    top: 20px;
-    margin: 0 auto;
-}
 
 
 }
