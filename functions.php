@@ -130,7 +130,18 @@ function mainSearch($con, $str, $start)
     }
 
 }
-
+/**
+ * Function for main and advanced search
+ * Performs an SQL query and prints the results using other functions
+ * @param  MySQL database connection $con
+ * @param  int $start Specifies the first result to be shown
+ * @param  int $opt determines which search function that should be used 
+ * @param  string $cid colorID/categoryID search string
+ * @param  string $cname color/category search string
+ * @param  string $id SetID/PartID search string
+ * @param  string $name Setname/Partname searchstring
+ * @return void
+ */
 function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
 {
 
