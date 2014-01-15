@@ -60,16 +60,13 @@
 
 <?php
 
-
 if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
-
-
 
     if (isset($_GET["advOPT1"])) {
     $searchOPT = $_GET['advOPT1'];
     }
     if (isset($_GET["cid"])) {
-    $cid = cleanInput($_GET["cid"]);
+    $year = cleanInput($_GET["year"]);
     }
     if (isset($_GET["cname"])) {
     $cname = cleanInput($_GET["cname"]);
@@ -90,7 +87,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
     }
 }
 ?>
-
 
         </main>
 
