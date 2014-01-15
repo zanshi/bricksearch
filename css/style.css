@@ -166,8 +166,8 @@ nav a:active {
 }
 
 .icons ul li:hover {
-    color:#FFFFFF;
-    background-color:#FFFFFF;
+    color:rgb(255,255,255);
+    background-color:rgb(255,255,255);
 }
 
 
