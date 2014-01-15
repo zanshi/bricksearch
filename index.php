@@ -19,9 +19,9 @@
 
         if (!empty($_GET["start"])) {
             $start = validate($_GET["start"]);
-            mainSearch(connect(), $searchterm, $start);
+            advSearch(connect(), $start, 2, "", "", "", $searchterm);
         } else {
-            mainSearch(connect(), $searchterm, 0);
+            advSearch(connect(), 0, 2, "", "", "", $searchterm);
         }
     }
 
@@ -35,10 +35,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
             if (isset($_GET["start"])) {
                 $start = $_GET["start"];
                 if (validateStart($start)) {
-                    mainSearch($con, $searchterm, $start);
+                    //mainSearch($con, $searchterm, $start);
+                    advSearch($con, $start, 2, "", "", "", $searchterm);
                 }
             } else {
-                mainSearch($con, $searchterm, 0);
+                //mainSearch($con, $searchterm, 0);
+                advSearch($con, 0, 2, "", "", "", $searchterm);
             }
         }
 

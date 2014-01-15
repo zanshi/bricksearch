@@ -6,18 +6,21 @@
  */
 function connect()
 {
+
     // Initialize MySQLi php module
     $con = mysqli_init();
 
     // If MySQLi initialization failed then print error and return null
     if (!$con) {
         printError("Database error.");
+
         return null;
     }
 
     // Check if a connection can be made, if not, print error and return null
     if (!(mysqli_real_connect($con, "koneko.se", "projekt", "tnmk30", "lego"))) {
         printError("Couldn't connect to database.");
+
         return null;
         //die('Could not connect: ' . mysqli_connect_error());
     }
@@ -106,14 +109,14 @@ function mainSearch($con, $str, $start)
 
     //$calcTime = microtime(true) - $calcTime;
 
-    $nrOfResults = countResults($con, $str);
+    $nrOfResults = countResults($con, 2, "", "", "", $str);
 
     if ($nrOfResults != 0) {
 
         //echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
         while ($row = mysqli_fetch_assoc($result)) {
-            mainSearchHtml($con, $row);
+            mainSearchHtml($con, $row, 2);
         }
 
         if ($nrOfResults > 20) {
@@ -123,58 +126,74 @@ function mainSearch($con, $str, $start)
         mysqli_free_result($result);
 
     } else {
-        noResult($str);
+        noResult($str, $opt);
     }
 
 }
 
-
-function legoSearch($con, $optArray)
+function advSearch($con, $start, $opt, $cid, $cname, $id, $name)
 {
 
-}
-
-
-
-function constructQuery($optArray)
-{
-    //foreach($optArray)
-
-    return $sqlString;
-}
-
-
-function advSearch($con, $str, $start, $opt)
-{
-
-    if ($opt) {
+    if ($opt == 2) {
+        $str = mysqli_real_escape_string($con, $name);
         $sql
-            = "";
-    } else {
+            = "SELECT sets.SetID, sets.Setname
+            FROM sets
+            WHERE SetID LIKE '%$name%'
+            OR Setname LIKE '%$name%'
+            LIMIT $start , 20";
+
+            $searchUrl = "index.php?searchterm=" . $name;
+    } elseif ($opt == 0) {
         $sql
-            = "";
+            = "SELECT sets.SetID, sets.Setname
+                FROM sets, categories
+                WHERE sets.catID = categories.catid
+                AND sets.catID LIKE '%$cid%'
+                AND categories.categoryname LIKE '%$cname%'
+                AND sets.SetID LIKE '%$id%'
+                AND sets.Setname LIKE '%$name%'
+                LIMIT $start , 20";
+
+                $searchUrl = "advanced.php?";
+    } elseif ($opt == 1) {
+        $sql
+            = "SELECT parts.PartID, parts.Partname
+                FROM parts, inventory, colors
+                WHERE inventory.ItemID = parts.PartID
+                AND inventory.ColorID = colors.ColorID
+                AND inventory.ColorID LIKE '%$cid%'
+                AND colors.Colorname LIKE '%$cname%'
+                AND parts.PartID LIKE '%$id%'
+                AND parts.Partname LIKE '%$name%'
+                LIMIT $start , 20";
+
+                $searchUrl = "advanced.php?";
+
     }
 
     $result = mysqli_query($con, $sql);
 
-    $nrOfResults = countResults($con, $str);
+    $nrOfResults = countResults($con, $opt, $cid, $cname, $id, $name);
+
+    
 
     if ($nrOfResults != 0) {
 
-        echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
+        //echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
         while ($row = mysqli_fetch_assoc($result)) {
-            mainSearchHtml($con, $row);
+            mainSearchHtml($con, $row, $opt);
         }
 
         if ($nrOfResults > 20) {
-            multiPage($str, $nrOfResults, $start);
+            multiPage($searchUrl, $nrOfResults, $start);
         }
 
         mysqli_free_result($result);
 
     } else {
-        noResult($str);
+        noResult($name, $opt);
     }
 
 }
@@ -186,16 +205,46 @@ function advSearch($con, $str, $start, $opt)
  * @param  string $str Search string
  * @return int $nrOfResults
  */
-function countResults($con, $str)
+function countResults($con, $opt, $cid, $cname, $id, $name)
 {
-    
+ /*
     $sql
         = "SELECT COUNT(*) AS results
         FROM sets
         WHERE SetID LIKE '%$str%'
         OR Setname LIKE '%$str%'"
     ;
+*/
+    if ($opt == 2) {
+        $sql
+            = "SELECT COUNT(*) AS results
+            FROM sets
+            WHERE SetID LIKE '%$name%'
+            OR Setname LIKE '%$name%'
+            ";
 
+    } elseif ($opt == 0) {
+        $sql
+            = "SELECT COUNT(*) AS results
+                FROM sets, categories
+                WHERE sets.catID = categories.catid
+                AND sets.catID LIKE '%$cid%'
+                AND categories.categoryname LIKE '%$cname%'
+                AND sets.SetID LIKE '%$id%'
+                AND sets.Setname LIKE '%$name%'
+                ";
+    } elseif ($opt == 1) {
+        $sql
+            = "SELECT COUNT(*) AS results
+                FROM parts, inventory, colors
+                WHERE inventory.ItemID = parts.PartID
+                AND inventory.ColorID = colors.ColorID
+                AND inventory.ColorID LIKE '%$cid%'
+                AND colors.Colorname LIKE '%$cname%'
+                AND parts.PartID LIKE '%$id%'
+                AND parts.Partname LIKE '%$name%'
+                ";
+    }
     $result = mysqli_query($con, $sql);
 
     $row = mysqli_fetch_assoc($result);
@@ -203,7 +252,6 @@ function countResults($con, $str)
     $nrOfResults = $row['results'];
 
     return $nrOfResults;
-
 }
 
 /**
@@ -212,11 +260,15 @@ function countResults($con, $str)
  * @param  string $str search string
  * @return void
  */
-function noResult($str)
+function noResult($name, $opt)
 {
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
-    echo        "Your search for <strong>" . $str . "</strong> gave no results. Please try again." . "\n";
+    if ($opt == 2) {
+        echo "Your search for <strong>" . $name . "</strong> gave no results. Please try again." . "\n";
+    } else {
+        echo "Your search gave no results. Please try again." . "\n";
+    }
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
 }
@@ -241,18 +293,26 @@ function printError($str)
  * @param  Associative array $row
  * @return void
  */
-function mainSearchHtml($con, $row)
+function mainSearchHtml($con, $row, $opt)
 {
-
-    $imgUrl = handleImgUrl($con, $row['SetID']);
-
+    if ($opt == 1) {
+        $imgUrl = handleImgUrl($con, $row['PartID']);
+    } else {
+        $imgUrl = handleImgUrl($con, $row['SetID']);
+    }
     echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
     echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
-    echo        "<h3 class='setname'>" . $row['Setname'] . "</h3> \n";
-    echo         "<p class='setid'>" . $row['SetID'] . "</p> \n";
+    if ($opt == 1) {
+        echo        "<h3 class='setname'>" . $row['Partname'] . "</h3> \n";
+        echo         "<p class='setid'>" . $row['PartID'] . "</p> \n";
+    } else {
+        echo        "<h3 class='setname'>" . $row['Setname'] . "</h3> \n";
+        echo         "<p class='setid'>" . $row['SetID'] . "</p> \n";
+
+    }
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
 
@@ -342,7 +402,7 @@ function multiPage($searchUrl, $nrOfResults, $start)
     if ($currentPage < 5) {
         $i = 0;
         $endPage = 8;
-    } else if ($totalPages - $currentPage < 5) {
+    } elseif ($totalPages - $currentPage < 5) {
         $i = ($totalPages - 8);
         $endPage = $totalPages;
     } else {
@@ -358,7 +418,7 @@ function multiPage($searchUrl, $nrOfResults, $start)
     echo "<li> <a href='" . $searchUrl . "'><strong>First result </strong></a> </li>";
 
     // Print the proper pages
-    
+
     if ($currentPage <= $totalPages) {
         for (; $i <= $endPage; $i++) {
 
