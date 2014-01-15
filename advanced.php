@@ -49,8 +49,8 @@
 -->
                 <div class="advRow">
                     <label>Select</label>
-                    <label for="part"><input type="radio" name="advOPT1" value="parts" id="part">Part</label>
-                    <label for="set"><input type="radio" name="advOPT1" value="sets" id="set" checked>Set</label>
+                    <label for="part"><input type="radio" name="advOPT1" value="1" id="part">Part</label>
+                    <label for="set"><input type="radio" name="advOPT1" value="0" id="set" checked>Set</label>
                 </div>
 
                 <input type="submit" id="searchButton2" value="Search">
@@ -63,14 +63,14 @@
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
 
-    $searchOPT = '';
+    $searchOPT = 0;
     $cid = "";
     $cname = "";
     $id = "";
     $name = "";
 
     if (isset($_GET["advOPT1"])) {
-    $searchOPT = (string)$_GET['advOPT1'];
+    $searchOPT = $_GET['advOPT1'];
     }
     if (isset($_GET["cid"])) {
     $cid = cleanInput($_GET["cid"]);
