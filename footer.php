@@ -4,9 +4,9 @@
 
             <!-- Social Icons -->
 			  <ul class="icons">
-				<li><a href="#"><img src="images/facebook.png" /></a></li>
-				<li><a href="#"><img src="images/twitter.png" /></a></li>
-				<li><a href="#"><img src="images/github.png" /></a></li>
+				<li><a href="#"><img src="facebook.png" /></a></li>
+				<li><a href="#"><img src="twitter.png" /></a></li>
+				<li><a href="#"><img src="github.png" /></a></li>
 			  </ul>
         </footer>
 
