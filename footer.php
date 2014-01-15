@@ -17,8 +17,8 @@
 
 				<li><a href="http://www.medieteknik.nu"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				width="40px" height="40px" viewBox="0 0 400 400" enable-background="new 0 0 400 400" xml:space="preserve">
-				<rect x="3" y="103" fill="#A6A6A6" width="187" height="187"/>
-				<rect x="210" y="103" fill="#BFBFBF" width="187" height="187"/>
+				<rect class="social-svg" x="3" y="103" fill="#444444" width="187" height="187"/>
+				<rect class="social-svg" x="210" y="103" fill="#444444" width="187" height="187"/>
 				</svg>
 				</svg>
 				</a></li>
