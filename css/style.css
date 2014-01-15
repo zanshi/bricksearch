@@ -159,8 +159,9 @@ nav a:active {
     right: 40px;
 }
 
-.icons li a svg:hover {
+.icons li a:hover {
     fill: #FFFFFF;
+    opacity: 0.5;
 }
 
 
