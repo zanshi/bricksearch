@@ -237,7 +237,7 @@ main {
 		overflow-x: scroll;
 		overflow-y: hidden;
 		height: 380px;
-		white-space:nowrap
+		white-space:nowrap;
 	} 
 
 .setname {
