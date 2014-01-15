@@ -4,7 +4,7 @@
 
         <div class="advSearch">
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="advSearchForm" method="get">
                 <div class="advRow">
                     <label>Year</label>
                     <input type="text" name="year" >
@@ -53,8 +53,9 @@
                     <label for="set"><input type="radio" name="advOPT1" value="sets" id="set" checked>Set</label>
                 </div>
 
-                <input type="submit" id="searchButton2" value="Search">
+                <!-- <button type="submit" class="button" id="searchButton2"> -->
             </form>
+            <input type="submit" form="advSearchForm" class="button" id="searchButton2" value="Search">
 
         </div>
 
