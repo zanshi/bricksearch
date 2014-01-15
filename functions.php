@@ -109,14 +109,14 @@ function mainSearch($con, $str, $start)
 
     //$calcTime = microtime(true) - $calcTime;
 
-    $nrOfResults = countResults($con, 2, "", "", "", $str);
+    $nrOfResults = countResults($con, 'main', "", "", "", $str);
 
     if ($nrOfResults != 0) {
 
         //echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
 
         while ($row = mysqli_fetch_assoc($result)) {
-            mainSearchHtml($con, $row, 2);
+            mainSearchHtml($con, $row, 'main');
         }
 
         if ($nrOfResults > 20) {
@@ -145,7 +145,7 @@ function mainSearch($con, $str, $start)
 function advSearch($con, $start, $opt, $year, $cname, $id, $name)
 {
 
-    if ($opt == 2) {
+    if ($opt == 'main') {
         $str = mysqli_real_escape_string($con, $name);
         $sql
             = "SELECT sets.SetID, sets.Setname
@@ -155,7 +155,7 @@ function advSearch($con, $start, $opt, $year, $cname, $id, $name)
             LIMIT $start , 20";
 
             $searchUrl = "index.php?searchterm=" . $name;
-    } elseif ($opt == 0) {
+    } elseif ($opt == 'sets') {
         $sql
             = "SELECT sets.SetID, sets.Setname
                 FROM sets, categories
@@ -166,7 +166,9 @@ function advSearch($con, $start, $opt, $year, $cname, $id, $name)
                 AND sets.Setname LIKE '%$name%'
                 LIMIT $start , 20";
                 $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
-    } elseif ($opt == 1) {
+    } 
+    /*
+    elseif ($opt == 'parts') {
         $sql
             = "SELECT parts.PartID, parts.Partname
                 FROM parts, inventory, colors
@@ -179,7 +181,7 @@ function advSearch($con, $start, $opt, $year, $cname, $id, $name)
                 LIMIT $start , 20";
                 $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
     }
-
+    */
     $result = mysqli_query($con, $sql);
 
     $nrOfResults = countResults($con, $opt, $year, $cname, $id, $name);
@@ -223,7 +225,7 @@ function countResults($con, $opt, $year, $cname, $id, $name)
         OR Setname LIKE '%$str%'"
     ;
 */
-    if ($opt == 2) {
+    if ($opt == 'main') {
         $sql
             = "SELECT COUNT(*) AS results
             FROM sets
@@ -231,7 +233,7 @@ function countResults($con, $opt, $year, $cname, $id, $name)
             OR Setname LIKE '%$name%'
             ";
 
-    } elseif ($opt == 0) {
+    } elseif ($opt == 'sets') {
         $sql
             = "SELECT COUNT(*) AS results
                 FROM sets, categories
@@ -241,7 +243,8 @@ function countResults($con, $opt, $year, $cname, $id, $name)
                 AND sets.SetID LIKE '%$id%'
                 AND sets.Setname LIKE '%$name%'
                 ";
-    } elseif ($opt == 1) {
+    }
+    /* elseif ($opt == 'parts') {
         $sql
             = "SELECT COUNT(*) AS results
                 FROM parts, inventory, colors
@@ -253,6 +256,7 @@ function countResults($con, $opt, $year, $cname, $id, $name)
                 AND parts.Partname LIKE '%$name%'
                 ";
     }
+    */
     $result = mysqli_query($con, $sql);
 
     $row = mysqli_fetch_assoc($result);
@@ -272,7 +276,7 @@ function noResult($name, $opt)
 {
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
-    if ($opt == 2) {
+    if ($opt == 'main') {
         echo "Your search for <strong>" . $name . "</strong> gave no results. Please try again." . "\n";
     } else {
         echo "Your search gave no results. Please try again." . "\n";
@@ -303,9 +307,10 @@ function printError($str)
  */
 function mainSearchHtml($con, $row, $opt)
 {
-    if ($opt == 1) {
+    
+    if ($opt == 'parts') {
         $imgUrl = handleImgUrl($con, $row['PartID'], 1);
-    } else {
+    } else {    
         $imgUrl = handleImgUrl($con, $row['SetID'], 0);
     }
     echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
@@ -313,13 +318,12 @@ function mainSearchHtml($con, $row, $opt)
     echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
-    if ($opt == 1) {
+    if ($opt == 'parts') {
         echo        "<h3 class='setname'>" . $row['Partname'] . "</h3> \n";
         echo         "<p class='setid'>" . $row['PartID'] . "</p> \n";
     } else {
         echo        "<h3 class='setname'>" . $row['Setname'] . "</h3> \n";
         echo         "<p class='setid'>" . $row['SetID'] . "</p> \n";
-
     }
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
