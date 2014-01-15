@@ -1,4 +1,3 @@
-        <div id="margin-footer"></div>
 
         <footer>
             <p>© 2013 BrickSearch</p>
