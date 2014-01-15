@@ -18,16 +18,8 @@
     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-        </div>
-        </main>
-
-        <footer>
-            <p>© 2013 BrickSearch</p>
-        </footer>
-
     </div>
-
-    <script src="js/script.js"></script>
+    </main>
 
      <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
@@ -41,6 +33,5 @@
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
     </script>
-</body>
 
-</html>
+<?php require 'footer.php';
