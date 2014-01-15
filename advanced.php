@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
     if (isset($_GET["name"])) {
     $name = cleanInput($_GET["name"]);
     }
-    if ($searchOPT != null || $year != null || $cname != null || $id != null || $name != null) {
+    if ($year != null || $cname != null || $id != null || $name != null) {
         if (isset($_GET["start"])) {
             $start = cleanInput($_GET["start"]);
             advSearch($con, $start, $searchOPT, $year, $cname, $id, $name);

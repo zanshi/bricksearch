@@ -7,7 +7,7 @@
 <?php
     require 'functions.php';
     $searchterm = "";
-    $searchOPT = "";
+    $searchOPT = "sets";
     $year = "";
     $cname = "";
     $id = "";
