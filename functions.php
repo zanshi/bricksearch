@@ -6,9 +6,20 @@
  */
 function connect()
 {
-    $con = mysqli_connect("koneko.se", "projekt", "tnmk30", "lego");
+    // Initialize MySQLi php module
+    $con = mysqli_init();
+
+    // If MySQLi initialization failed then print error and return null
     if (!$con) {
-        die('Could not connect: ' . mysqli_connect_error());
+        printError("Database error.");
+        return null;
+    }
+
+    // Check if a connection can be made, if not, print error and return null
+    if (!(mysqli_real_connect($con, "koneko.se", "projekt", "tnmk30", "lego"))) {
+        printError("Couldn't connect to database.");
+        return null;
+        //die('Could not connect: ' . mysqli_connect_error());
     }
 
     return $con;
@@ -21,7 +32,7 @@ function connect()
  */
 function validate($data)
 {
-    if (ctype_space($data) || empty($data) || $data == null) {
+    if (ctype_space($data) || empty($data) || $data === null) {
         return false;
     } else {
         return true;
@@ -76,23 +87,6 @@ function printTitle($title)
  */
 function mainSearch($con, $str, $start)
 {
-    /*$sql
-        = "SELECT images.*, sets.SetID, sets.Setname
-        FROM sets, images
-        WHERE sets.SetID = images.itemID
-        AND images.itemTypeID = 'S'
-        AND (sets.SetID LIKE '%$str%' OR sets.Setname LIKE '%$str%')
-        LIMIT $start , 20"
-    ;*/
-
-/*    $sql
-        = "SELECT images.*, sets.setID, sets.Setname
-        FROM sets
-        LEFT JOIN images
-        ON sets.SetID=images.itemID
-        WHERE (SetID LIKE '%$str%' OR Setname LIKE '%$str%')
-        LIMIT $start , 20"
-    ;*/
 
     $str = mysqli_real_escape_string($con, $str);
 
@@ -131,6 +125,14 @@ function mainSearch($con, $str, $start)
     }
 
 }
+
+
+function legoSearch($con, $optArray)
+{
+
+}
+
+
 
 function constructQuery($optArray)
 {
@@ -213,6 +215,15 @@ function noResult($str)
     echo "<div class='row'>" . "\n";
     echo    "<div class='text' style='text-align:center'>" . "\n";
     echo        "Your search for <strong>" . $str . "</strong> gave no results. Please try again." . "\n";
+    echo    "</div>" . "\n";
+    echo "</div>" . "\n";
+}
+
+function printError($str)
+{
+    echo "<div class='row'>" . "\n";
+    echo    "<div class='text' style='text-align:center'>" . "\n";
+    echo        "Error: <strong>" . $str . "</strong>" . "\n";
     echo    "</div>" . "\n";
     echo "</div>" . "\n";
 }

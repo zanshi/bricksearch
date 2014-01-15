@@ -26,7 +26,8 @@
     }
 
 }*/
-if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+if ($_SERVER["REQUEST_METHOD"] == "GET" && $con = connect()) {
     if (isset($_GET["searchterm"])) {
         if (validate($_GET["searchterm"])) {
             $searchterm = cleanInput($_GET["searchterm"]);
@@ -34,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             if (isset($_GET["start"])) {
                 $start = $_GET["start"];
                 if (validateStart($start)) {
-                    mainSearch(connect(), $searchterm, $start);
+                    mainSearch($con, $searchterm, $start);
                 }
             } else {
-                mainSearch(connect(), $searchterm, 0);
+                mainSearch($con, $searchterm, 0);
             }
         }
 
