@@ -91,8 +91,8 @@ function writeSetInfo($row)
 function writePartInfo($result, $con)
 {
     echo "<div class='partsContainer'>";
-    echo "<div class='scroll'>";
     echo    "<h2> Parts </h2>";
+    echo "<div class='scroll'>";
     while ($row = mysqli_fetch_assoc($result)) {
 
         $imgUrl = handleImgUrl($con, $row, 1);
