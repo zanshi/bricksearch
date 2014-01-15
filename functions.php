@@ -152,6 +152,7 @@ function advSearch($con, $start, $opt, $year, $cname, $id, $name)
             FROM sets
             WHERE SetID LIKE '%$name%'
             OR Setname LIKE '%$name%'
+            ORDER BY Setname
             LIMIT $start , 20";
 
             $searchUrl = "index.php?searchterm=" . $name;
@@ -164,6 +165,7 @@ function advSearch($con, $start, $opt, $year, $cname, $id, $name)
                 AND categories.categoryname LIKE '%$cname%'
                 AND sets.SetID LIKE '%$id%'
                 AND sets.Setname LIKE '%$name%'
+                ORDER BY Setname
                 LIMIT $start , 20";
                 $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name;
     } 
