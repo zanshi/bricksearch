@@ -18,7 +18,7 @@
 	    console.log(setID);
 
 	    if (parent.nextSibling.className == "row extendedResults") {
-	        parent.nextSibling.remove();
+	        $( parent.nextSibling ).toggle();
 	    } else {
 	        $.get("extended.php", { id: setID })
 	            .done(function (data) {
