@@ -80,56 +80,7 @@ function printTitle($title)
 
 }
 
-/**
- * Main search function.
- * Performs an SQL query and prints the results using other functions
- * @param  MySQL database connection $con
- * @param  string $str Search string
- * @param  int $start Specifies the first result to be shown
- * @return void
- */
-function mainSearch($con, $str, $start)
-{
 
-    $str = mysqli_real_escape_string($con, $str);
-
-    $sql
-        = "SELECT sets.SetID, sets.Setname
-        FROM sets
-        WHERE SetID LIKE '%$str%'
-        OR Setname LIKE '%$str%'
-        LIMIT $start , 20"
-    ;
-
-    //$calcTime = microtime(true);
-
-    $result = mysqli_query($con, $sql);
-
-    $searchUrl = "index.php?searchterm=" . $str;
-
-    //$calcTime = microtime(true) - $calcTime;
-
-    $nrOfResults = countResults($con, 'main', "", "", "", $str);
-
-    if ($nrOfResults != 0) {
-
-        //echo "<div id='resultStats'>" . $nrOfResults . " results. (" . $calcTime . " seconds) </div>";
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            mainSearchHtml($con, $row, 'main');
-        }
-
-        if ($nrOfResults > 20) {
-            multiPage($searchUrl, $nrOfResults, $start);
-        }
-
-        mysqli_free_result($result);
-
-    } else {
-        noResult($str, $opt);
-    }
-
-}
 /**
  * Function for main and advanced search
  * Performs an SQL query and prints the results using other functions
@@ -168,7 +119,7 @@ function advSearch($con, $start, $opt, $year, $cname, $id, $name)
                 ORDER BY Setname
                 LIMIT $start , 20";
                 $searchUrl = "advanced.php?year=" . $year . "&cname=" . $cname . "&id=" . $id . "&name=" . $name . "&advOPT1=" . $opt;
-    } 
+    }
     /*
     elseif ($opt == 'parts') {
         $sql
@@ -265,7 +216,9 @@ function countResults($con, $opt, $year, $cname, $id, $name)
 
     $nrOfResults = $row['results'];
 
-    echo "<div class='row'><p style='text-align: center; margin: 10px;'>" . $nrOfResults . " results. </p></div>";
+    if ($nrOfResults != 0) {
+        echo "<div class='row'><p style='text-align: center; margin: 10px;'>" . $nrOfResults . " results. </p></div>";
+    }
 
     return $nrOfResults;
 }
@@ -314,7 +267,7 @@ function mainSearchHtml($con, $row, $opt)
     
     if ($opt == 'parts') {
         $imgUrl = handleImgUrl($con, $row['PartID'], 1);
-    } else {    
+    } else {
         $imgUrl = handleImgUrl($con, $row['SetID'], 0);
     }
     echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
