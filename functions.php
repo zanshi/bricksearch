@@ -232,24 +232,24 @@ function countResults($con, $opt, $year, $cname, $id, $name)
  */
 function noResult($name, $opt)
 {
-    echo "<div class='row'>" . "\n";
-    echo    "<div class='text' style='text-align:center'>" . "\n";
+    echo "<div class='row'>";
+    echo    "<div class='text' style='text-align:center'>";
     if ($opt == 'main') {
-        echo "Your search for <strong>" . $name . "</strong> gave no results. Please try again." . "\n";
+        echo "Your search for <strong>" . $name . "</strong> gave no results. Please try again.";
     } else {
-        echo "Your search gave no results. Please try again." . "\n";
+        echo "Your search gave no results. Please try again.";
     }
-    echo    "</div>" . "\n";
-    echo "</div>" . "\n";
+    echo    "</div>";
+    echo "</div>";
 }
 
 function printError($str)
 {
-    echo "<div class='row'>" . "\n";
-    echo    "<div class='text' style='text-align:center'>" . "\n";
-    echo        "Error: <strong>" . $str . "</strong>" . "\n";
-    echo    "</div>" . "\n";
-    echo "</div>" . "\n";
+    echo "<div class='row'>";
+    echo    "<div class='text' style='text-align:center'>";
+    echo        "Error: <strong>" . $str . "</strong>";
+    echo    "</div>";
+    echo "</div>";
 }
 
 /**
@@ -271,20 +271,20 @@ function mainSearchHtml($con, $row, $opt)
     } else {
         $imgUrl = handleImgUrl($con, $row['SetID'], 0);
     }
-    echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
-    echo    "<div class='thumb'>" . "\n";
-    echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' width='80px' height='60px'> </a>" . "\n";
-    echo    "</div>" . "\n";
-    echo    "<div class='text'>" . "\n";
+    echo "<div class='row' onclick='loadExtended(this)'>";
+    echo    "<div class='thumb'>";
+    echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' width='80px' height='60px'> </a>";
+    echo    "</div>";
+    echo    "<div class='text'>";
     if ($opt == 'parts') {
-        echo        "<h3 class='setname'>" . $row['Partname'] . "</h3> \n";
-        echo         "<p class='setid'>" . $row['PartID'] . "</p> \n";
+        echo        "<h3 class='setname'>" . $row['Partname'] . "</h3>";
+        echo         "<p class='setid'>" . $row['PartID'] . "</p>";
     } else {
-        echo        "<h3 class='setname'>" . $row['Setname'] . "</h3> \n";
-        echo         "<p class='setid'>" . $row['SetID'] . "</p> \n";
+        echo        "<h3 class='setname'>" . $row['Setname'] . "</h3>";
+        echo         "<p class='setid'>" . $row['SetID'] . "</p>";
     }
-    echo    "</div>" . "\n";
-    echo "</div>" . "\n";
+    echo    "</div>";
+    echo "</div>";
 
 }
 

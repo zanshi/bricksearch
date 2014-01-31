@@ -118,7 +118,7 @@ function writePartInfo($result, $con)
         if ($row['partName'] != null) {
             $imgUrl = handleImgUrl($con, $row, 1);
             echo "<div class='parts'>";
-            echo    "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>";
+            echo    "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' width='80px' width='60px' > </a>";
             echo    "<h3>Part name</h3>";
             echo        "<p>" . $row['partName'] . "</p>";
             echo    "<h3>Part ID</h3>";
