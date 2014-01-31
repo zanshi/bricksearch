@@ -1,5 +1,7 @@
 <?php
 
+require 'config.php';
+
 /**
  * Connect to the specified MySQL database
  * @return MySQL database connection
@@ -18,7 +20,7 @@ function connect()
     }
 
     // Check if a connection can be made, if not, print error and return null
-    if (!(mysqli_real_connect($con, "koneko.se", "projekt", "tnmk30", "lego"))) {
+    if (!(mysqli_real_connect($con, $mysqlServer, $mysqlUser, $mysqlPassword, $mysqlDatabase))) {
         printError("Couldn't connect to database.");
 
         return null;
@@ -272,7 +274,7 @@ function mainSearchHtml($con, $row, $opt)
     }
     echo "<div class='row' onclick='loadExtended(this)'>" . "\n";
     echo    "<div class='thumb'>" . "\n";
-    echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' > </a>" . "\n";
+    echo        "<a href='". $imgUrl ."'><img src='" . $imgUrl . "' alt='bild' width='80px' height='60px'> </a>" . "\n";
     echo    "</div>" . "\n";
     echo    "<div class='text'>" . "\n";
     if ($opt == 'parts') {
@@ -332,7 +334,7 @@ function handleImgUrl($con, $info, $opt)
         // If the row doesn't contain an item ID, then the specified set doesn't
         // have an image. Sets the URL to a placeholder image
         if ($row['itemID'] == null) {
-            $imgUrl = "img/noimage.png";
+            $imgUrl = "img/noimage.svg";
         } else {
             // Puts together the URL according to what $row contains
             $imgDir = "http://webstaff.itn.liu.se/~stegu/img.bricklink.com/";

@@ -22,7 +22,7 @@ if (isset($_GET["searchterm"])) {
 }
     ?>
     <!--Favicon-->
-    <link rel="shortcut icon" type="image/x-icon" href="favicon2.png" />
+    <link rel="shortcut icon" href="img/favicon.ico" />
     <!--Fonts-->
     <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'>
@@ -30,11 +30,11 @@ if (isset($_GET["searchterm"])) {
     <link rel="stylesheet" href="css/normalize.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <!--Icons for Apple/Android-->
-    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
-    <link rel="shortcut icon" sizes="196x196" href="nice-highres.png">
+    <link rel="apple-touch-icon" href="img/touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/touch-icon-ipad-retina.png">
+    <link rel="shortcut icon" sizes="196x196" href="img/nice-highres.png">
 
     <script src="js/jquery-2.0.3.js"></script>
 
