@@ -1,13 +1,12 @@
 <?php
 
-require 'config.php';
-
 /**
  * Connect to the specified MySQL database
  * @return MySQL database connection
  */
 function connect()
 {
+    require 'config.php';
 
     // Initialize MySQLi php module
     $con = mysqli_init();
