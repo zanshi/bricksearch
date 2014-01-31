@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 <?php
     require 'functions.php';
@@ -36,7 +36,27 @@ if (isset($_GET["searchterm"])) {
     <link rel="apple-touch-icon" sizes="152x152" href="img/touch-icon-ipad-retina.png">
     <link rel="shortcut icon" sizes="196x196" href="img/nice-highres.png">
 
-    <script src="js/jquery-2.0.3.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <script>
+        function loadExtended(parent)
+        {
+            var setID = parent.children[1].children[1].innerHTML;
+
+            console.log(setID);
+
+            if (parent.nextSibling.className == "row extendedResults") {
+                $( parent.nextSibling ).toggle();
+            } else {
+                $.get("extended.php", { id: setID })
+                    .done(function (data) {
+                        $(parent).after(data);
+                        console.log("success");
+                    });
+            }
+
+        }
+    </script>
 
 </head>
 
