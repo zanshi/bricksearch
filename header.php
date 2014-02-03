@@ -36,7 +36,7 @@ if (isset($_GET["searchterm"])) {
     <link rel="apple-touch-icon" sizes="152x152" href="img/touch-icon-ipad-retina.png">
     <link rel="shortcut icon" sizes="196x196" href="img/nice-highres.png">
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script async src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
     <script async>
         function loadExtended(parent)
