@@ -38,7 +38,7 @@ if (isset($_GET["searchterm"])) {
 
     <script async src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
-    <script async>
+    <script>
         function loadExtended(parent)
         {
             var setID = parent.children[1].children[1].innerHTML;
